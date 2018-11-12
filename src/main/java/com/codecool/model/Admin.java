@@ -2,52 +2,54 @@ package com.codecool.model;
 
 import com.codecool.dao.RegularEmployeeDAO;
 
-public class Admin {
-    private String login;
+public class Admin extends User{
+    private String userName;
     private String password;
     private String id;
     private int group;
+    private String name;
+    private String surename;
 //    private AdminView adminView;
 //    private MentorDAO mentorDAO;
 //    private StudentDAO studentDAO;
 //    private RegularEmployeeDAO regularEmployeeDAO;
-    public Admin(String id, String login, String password, int group){
+    public Admin(String id, String userName, String password, String name, String surename, int group){
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.name = name;
+        this.surename = surename;
         this.group = group;
-        this.id= id;
-        this.login = login;
-        this.password = password;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    @Override
     public String getId() {
         return id;
     }
 
-    public void setID(String id) {
-        this.id = id;
+    @Override
+    public String getUserName() {
+        return userName;
     }
 
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
     public int getGroup() {
         return group;
     }
 
-    public void setGroup(int group) {
-        this.group = group;
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getSurename() {
+        return surename;
     }
 }
 
