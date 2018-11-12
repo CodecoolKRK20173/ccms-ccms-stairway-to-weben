@@ -3,12 +3,12 @@ package com.codecool.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student {
+public class Student extends User{
 
     private String id;
     private String login;
     private String password;
-    private int group;
+    private final int group = 4;
     private String name;
     private String surname;
     private String email;
@@ -20,7 +20,6 @@ public class Student {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.group = group;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -36,7 +35,7 @@ public class Student {
         this.id = id;
     }
 
-    public String getLogin() {
+    public String getUserName() {
         return login;
     }
 
@@ -62,10 +61,6 @@ public class Student {
 
     public void setAttendance(String attendance){
         this.attendance = attendance;
-    }
-
-    public void setGroup(int group) {
-        this.group = group;
     }
 
     public String getName() {
