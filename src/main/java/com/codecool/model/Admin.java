@@ -8,17 +8,13 @@ public class Admin extends User{
     private String id;
     private int group;
     private String name;
-    private String surename;
-//    private AdminView adminView;
-//    private MentorDAO mentorDAO;
-//    private StudentDAO studentDAO;
-//    private RegularEmployeeDAO regularEmployeeDAO;
-    public Admin(String id, String userName, String password, String name, String surename, int group){
+    private String surname;
+    public Admin(String id, String userName, String password, String name, String surname, int group){
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.name = name;
-        this.surename = surename;
+        this.surname = surname;
         this.group = group;
     }
 
@@ -48,8 +44,8 @@ public class Admin extends User{
     }
 
     @Override
-    public String getSurename() {
-        return surename;
+    public String getSurname() {
+        return surname;
     }
 }
 
