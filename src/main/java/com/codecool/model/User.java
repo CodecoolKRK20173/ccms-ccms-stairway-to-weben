@@ -1,16 +1,16 @@
 package com.codecool.model;
 
-public abstract class User {
+public interface User {
 
-    public abstract String getId();
+    String getId();
 
-    public abstract String getUserName();
+    String getUserName();
 
-    public abstract String getPassword();
+    String getPassword();
 
-    public abstract String getName();
+    String getName();
 
-    public abstract String getSurname();
+    String getSurname();
 
-    public abstract int getGroup();
+    int getGroup();
 }

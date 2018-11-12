@@ -1,6 +1,6 @@
 package com.codecool.model;
 
-public class RegularEmployee {
+public class RegularEmployee implements User {
 
     private String id;
     private String userName;
