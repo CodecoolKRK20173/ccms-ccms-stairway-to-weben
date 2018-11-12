@@ -10,7 +10,7 @@ public abstract class User {
 
     public abstract String getName();
 
-    public abstract String getSurename();
+    public abstract String getSurname();
 
     public abstract int getGroup();
 }
