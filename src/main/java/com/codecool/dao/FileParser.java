@@ -26,6 +26,7 @@ public class FileParser {
 			while(sc.hasNext()){
 			
 				fileContent += sc.nextLine();
+				fileContent += "\n";
 			
 			}
 		sc.close();
