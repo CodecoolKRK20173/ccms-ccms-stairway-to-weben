@@ -2,14 +2,14 @@ package com.codecool.model;
 
 public class RegularEmployee {
 
-    private int id;
+    private String id;
     private String userName;
     private String password;
     private String name;
     private String surename;
-    private String group;
+    private int group;
 
-    public RegularEmployee(int id, String userName, String password, String name, String surename, String group){
+    public RegularEmployee(String id, String userName, String password, String name, String surename, int group){
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -34,11 +34,11 @@ public class RegularEmployee {
         this.surename = surename;
     }
 
-    public void setGroup(String group) {
+    public void setGroup(int group) {
         this.group = group;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -58,7 +58,7 @@ public class RegularEmployee {
         return surename;
     }
 
-    public String getGroup() {
+    public int getGroup() {
         return group;
     }
 

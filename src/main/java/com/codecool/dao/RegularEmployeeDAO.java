@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface RegularEmployeeDAO {
 
-    RegularEmployee getRegularEmployee(int id);
+    RegularEmployee getRegularEmployee(String id);
 
     List<RegularEmployee> getListOfEmployees();
 
     void createEmployee(RegularEmployee employee);
 
-    void deleteEmployee(int id);
+    void deleteEmployee(String id);
 
     void updateEmployee(RegularEmployee employee);
 
