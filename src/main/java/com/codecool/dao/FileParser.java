@@ -1,4 +1,4 @@
-package com.codecool.dao;
+//package com.codecool.dao;
 
 import java.util.*;
 import java.io.*;
@@ -14,6 +14,9 @@ public class FileParser {
 	public FileParser(String file){
 		listOfUsers=new ArrayList<>();
 		this.fileName=file;
+	}
+	public List<String[]> getList(){
+		return this.listOfUsers();
 	}
 	
 	
@@ -41,7 +44,7 @@ public class FileParser {
 	}
 
 	public void splitFileContent(){
-	
+		listOfUsers=new ArrayList<>();
 		this.splitedFileContent=this.fileContent.split("\\r?\\n");
 		for(String line : splitedFileContent){
 			this.listOfUsers.add(line.split("\\|"));
@@ -57,5 +60,64 @@ public class FileParser {
 		return this.listOfUsers;
 	}
 
+	
+	public void AddNewRecord(String newRecordToFile){
+	
+		try{
+		
+			FileWriter fw = new FileWriter(this.fileName,true);
+			fw.write(newRecordToFile+"\n");
+			fw.close();
+		}
+		
+		catch(IOException e){
+		
+			System.out.println("there is a problem...");
+		
+		}
+	
+	
+	}
+	
+	public void SaveUploadedListInFile(List<String[]> list){
+	
+		String newContent="";
+		
+		for(String[] array : list){
+		
+			for(int i=0; i<array.length; i++){
+				newContent+=array[i];
+				newContent+="|";
+			
+			
+			}
+			newContent+="\n";
+		
+		}
+		
+		try{
+		
+			FileWriter fw = new FileWriter(this.fileName,false);
+			fw.write(newContent);
+			System.out.println("sad");
+			fw.close();
+			
+		
+		}
+		catch(IOException e){
+		
+			System.out.println("fd");
+			
+		}
+	
+	
+	
+	}
+	
+	
+	
+	
+	
+	
 	
 }
