@@ -61,8 +61,8 @@ public class FileParser {
 	}
 
 	
-	public void AddNewRecord(String newRecordToFile){
-	
+	public void addNewRecord(String newRecordToFile){
+
 		try{
 		
 			FileWriter fw = new FileWriter(this.fileName,true);
@@ -70,7 +70,7 @@ public class FileParser {
 			fw.close();
 		}
 		
-		catch(IOException e){
+		catch(Exception e){
 		
 			System.out.println("there is a problem...");
 		
@@ -79,7 +79,7 @@ public class FileParser {
 	
 	}
 	
-	public void SaveUploadedListInFile(List<String[]> list){
+	public void saveUploadedListInFile(List<String[]> list){
 	
 		String newContent="";
 		
@@ -88,7 +88,7 @@ public class FileParser {
 			for(int i=0; i<array.length; i++){
 				newContent+=array[i];
 				newContent+="|";
-			
+
 			
 			}
 			newContent+="\n";
@@ -96,7 +96,7 @@ public class FileParser {
 		}
 		
 		try{
-		
+            System.out.println(newContent+"a");
 			FileWriter fw = new FileWriter(this.fileName,false);
 			fw.write(newContent);
 			System.out.println("sad");

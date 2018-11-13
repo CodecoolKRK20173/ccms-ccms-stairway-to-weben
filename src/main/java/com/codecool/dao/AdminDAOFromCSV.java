@@ -17,6 +17,23 @@ public class AdminDAOFromCSV implements AdminDAO{
         listOfArrays = new ArrayList<>();
     }
 
+    public String toString(Admin admin){
+        String newAdmin = "";
+        newAdmin += admin.getId();
+        newAdmin += "|";
+        newAdmin += admin.getUserName();
+        newAdmin += "|";
+        newAdmin += admin.getPassword();
+        newAdmin += "|";
+        newAdmin += admin.getName();
+        newAdmin += "|";
+        newAdmin += admin.getSurname();
+        newAdmin += "|";
+        newAdmin += "3";
+        newAdmin += "|";
+        return  newAdmin;
+
+    }
 
     public FileParser getFileParser() {
         return fileParser;
