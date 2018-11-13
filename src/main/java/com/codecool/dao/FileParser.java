@@ -1,4 +1,4 @@
-//package com.codecool.dao;
+package com.codecool.dao;
 
 import java.util.*;
 import java.io.*;
