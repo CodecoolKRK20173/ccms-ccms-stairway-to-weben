@@ -30,7 +30,7 @@ public class MentorDAOFromCSV implements MentorDAO{
     public List<Mentor> getListOfMentors() {
         List<Mentor> mentors = new ArrayList<>();
         for (int i = 0; i < listOfArrays.size(); i++) {
-            if (listOfArrays.get(i)[0].equals(id) && listOfArrays.get(i)[5].equals(MentorGroup)){
+            if (listOfArrays.get(i)[5].equals(MentorGroup)){
                 mentors.add(new Mentor((listOfArrays.get(i)[0],listOfArrays.get(i)[1],listOfArrays.get(i)[2],listOfArrays.get(i)[3],listOfArrays.get(i)[4],MentorGroupNumber)));
             }
         }
