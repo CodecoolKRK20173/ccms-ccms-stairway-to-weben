@@ -8,6 +8,7 @@ public class RegularEmployeeView {
         System.out.println("1. View list of students with contacts");
         System.out.println("2. Check coffee status");
         System.out.println("3. Check office supplies");
+        System.out.println("4. Billing system");
         System.out.println("0. Log out");
     }
 
