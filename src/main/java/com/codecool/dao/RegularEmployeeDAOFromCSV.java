@@ -10,9 +10,10 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
     private List<String[]> usersList;
     private String REGULAR_EMPLOYEE_GROUP = "2";
     private int REGULAR_EMPLOYEE_GROUP_NUMBER = 2;
+    private FileParser fileParser;
 
     public RegularEmployeeDAOFromCSV(){
-        FileParser fileParser = new FileParser("Workers");
+        fileParser = new FileParser("Workers");
         usersList = fileParser.listOfUsers();
     }
 
@@ -57,17 +58,44 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
     }
 
     @Override
-    public void createEmployee() {
+    public void createEmployee(RegularEmployee employee) {
+        String[] newEmployee = createRecordFromEmployee(employee);
 
+        fileParser.addNewRecord(newEmployee);
+    }
+
+    private String[] createRecordFromEmployee(RegularEmployee employee) {
+        String[] newEmployee = new String[6];
+
+        newEmployee[0] = employee.getId();
+        newEmployee[1] = employee.getUserName();
+        newEmployee[2] = employee.getPassword();
+        newEmployee[3] = employee.getName();
+        newEmployee[4] = employee.getSurname();
+        newEmployee[5] = REGULAR_EMPLOYEE_GROUP;
+        return newEmployee;
     }
 
     @Override
-    public void deleteEmployee(String id) {
-
+    public void deleteEmployee(String userName) {
+        for (int i = 0; i < usersList.size(); i++) {
+            if(usersList.get(i)[1].equals(userName)){
+                usersList.remove(i);
+                break;
+            }
+        }
+        fileParser.saveUploadedListInFile(usersList);
     }
 
     @Override
     public void updateEmployee(RegularEmployee employee) {
 
+        for (int i = 0; i < usersList.size(); i++) {
+            if(usersList.get(i)[1].equals(employee.getUserName())){
+                usersList.set(i, createRecordFromEmployee(employee));
+                break;
+            }
+        }
+        fileParser.saveUploadedListInFile(usersList);
     }
 }

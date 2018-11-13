@@ -10,9 +10,9 @@ public interface RegularEmployeeDAO {
 
     List<RegularEmployee> getListOfEmployees();
 
-    void createEmployee();
+    void createEmployee(RegularEmployee employee);
 
-    void deleteEmployee(String id);
+    void deleteEmployee(String userName);
 
     void updateEmployee(RegularEmployee employee);
 

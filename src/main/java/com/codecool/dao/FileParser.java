@@ -75,9 +75,12 @@ public class FileParser {
 			System.out.println("there is a problem...");
 		
 		}
-	
-	
 	}
+
+	public void addNewRecord(String[] newRecord){
+        String newRecordToFile = String.join("|", newRecord);
+        addNewRecord(newRecordToFile);
+    }
 	
 	public void saveUploadedListInFile(List<String[]> list){
 	
