@@ -3,7 +3,7 @@ package com.codecool.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student extends User{
+public class Student implements User{
 
     private String id;
     private String login;
