@@ -1,20 +1,20 @@
 package com.codecool.model;
 
-public class RegularEmployee {
+public class RegularEmployee implements User {
 
     private String id;
     private String userName;
     private String password;
     private String name;
-    private String surename;
+    private String surname;
     private int group;
 
-    public RegularEmployee(String id, String userName, String password, String name, String surename, int group){
+    public RegularEmployee(String id, String userName, String password, String name, String surname, int group){
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.name = name;
-        this.surename = surename;
+        this.surname = surname;
         this.group = group;
     }
 
@@ -30,8 +30,8 @@ public class RegularEmployee {
         this.name = name;
     }
 
-    public void setSurename(String surename) {
-        this.surename = surename;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public void setGroup(int group) {
@@ -54,8 +54,8 @@ public class RegularEmployee {
         return name;
     }
 
-    public String getSurename() {
-        return surename;
+    public String getSurname() {
+        return surname;
     }
 
     public int getGroup() {
