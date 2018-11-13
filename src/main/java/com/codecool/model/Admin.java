@@ -2,7 +2,7 @@ package com.codecool.model;
 
 import com.codecool.dao.RegularEmployeeDAO;
 
-public class Admin extends User{
+public class Admin implements User{
     private String userName;
     private String password;
     private String id;
