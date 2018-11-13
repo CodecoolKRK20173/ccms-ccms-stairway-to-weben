@@ -1,4 +1,6 @@
 package com.codecool.util;
+import com.codecool.dao.FileParser;
+
 import java.util.*;
 public class LogIn{
 
@@ -30,14 +32,5 @@ public class LogIn{
 		return "Login or password is invalid";
 		
 	}
-	
-	public static void main(String[] args){
-	
-	
-		LogIn login = new LogIn();
-		System.out.println(login.FindGroupByLogin("Login1","Password1"));
-	
-	}
-	
-	
+
 }

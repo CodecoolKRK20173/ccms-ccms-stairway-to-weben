@@ -96,9 +96,4 @@ public class StudentDAO {
         return list;
     }
 
-    public static void main(String[] args) {
-        StudentDAO studentDAO = new StudentDAO();
-
-
-    }
 }
