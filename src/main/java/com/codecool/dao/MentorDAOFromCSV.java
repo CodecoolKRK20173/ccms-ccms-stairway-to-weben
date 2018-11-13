@@ -18,9 +18,10 @@ public class MentorDAOFromCSV implements MentorDAO{
     }
     @Override
     public Mentor getMentor(String id) {
+        this.listOfArrays = fileParser.listOfUsers();
         for (int i = 0; i < listOfArrays.size(); i++) {
             if (listOfArrays.get(i)[0].equals(id) && listOfArrays.get(i)[5].equals(MentorGroup)){
-                this.mentor = new Mentor((listOfArrays.get(i)[0],listOfArrays.get(i)[1],listOfArrays.get(i)[2],listOfArrays.get(i)[3],listOfArrays.get(i)[4],MentorGroupNumber));
+                this.mentor = new Mentor(listOfArrays.get(i)[0],listOfArrays.get(i)[1],listOfArrays.get(i)[2],listOfArrays.get(i)[3],listOfArrays.get(i)[4],MentorGroupNumber);
             }
         }
         return mentor;
@@ -28,10 +29,11 @@ public class MentorDAOFromCSV implements MentorDAO{
 
     @Override
     public List<Mentor> getListOfMentors() {
+        this.listOfArrays = fileParser.listOfUsers();
         List<Mentor> mentors = new ArrayList<>();
         for (int i = 0; i < listOfArrays.size(); i++) {
             if (listOfArrays.get(i)[5].equals(MentorGroup)){
-                mentors.add(new Mentor((listOfArrays.get(i)[0],listOfArrays.get(i)[1],listOfArrays.get(i)[2],listOfArrays.get(i)[3],listOfArrays.get(i)[4],MentorGroupNumber)));
+                mentors.add(new Mentor(listOfArrays.get(i)[0],listOfArrays.get(i)[1],listOfArrays.get(i)[2],listOfArrays.get(i)[3],listOfArrays.get(i)[4],MentorGroupNumber));
             }
         }
         return mentors;
