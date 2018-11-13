@@ -57,7 +57,7 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
     }
 
     @Override
-    public void createEmployee(RegularEmployee employee) {
+    public void createEmployee() {
 
     }
 
