@@ -10,10 +10,10 @@ public interface IStudentDAO {
     List<Student> getListOfStudents();
     Map<String, Integer> getGrades();
     List<Student> getAddresses();
-    List<Student> getListOfStudentByGroup();
+    List<Student> getListOfStudentsByGroup();
     List<Student> changeGrade();
     List<Student> getListOfAttendance();
-    List<Student> addStudentToGroup();
+    List<Student> addStudentToGroupClass();
     List<Student> addStudent();
     List<Student> removeStudent();
     List<Student> editStudent();

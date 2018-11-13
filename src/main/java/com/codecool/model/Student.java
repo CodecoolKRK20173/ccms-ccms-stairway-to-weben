@@ -14,9 +14,14 @@ public class Student extends User{
     private String email;
     private String address;
     private String attendance;
+    private String groupClass;
     private Map<String, Integer> grades;
 
-    public Student(String id, String login, String password, int group, String name, String surname, String email, String address){
+    public Student(){
+
+    }
+
+    public Student(String id, String login, String password, String name, String surname, String email, String address, String groupClass){
         this.id = id;
         this.login = login;
         this.password = password;
@@ -24,6 +29,7 @@ public class Student extends User{
         this.surname = surname;
         this.email = email;
         this.address = address;
+        this.groupClass = groupClass;
         this.grades = new HashMap<>();
     }
 
@@ -101,5 +107,13 @@ public class Student extends User{
 
     public void setGrades(Map<String, Integer> grades) {
         this.grades = grades;
+    }
+
+    public String getGroupClass(){
+        return groupClass;
+    }
+
+    public String toString(){
+        return id + " " + name + " " + surname + " " + email + " " + address + " " + groupClass;
     }
 }

@@ -10,52 +10,52 @@ public class FileParser {
 	private String fileName;
 	private String fileContent;
 	private String[] splitedFileContent;
-	
+
 	public FileParser(String file){
 		listOfUsers=new ArrayList<>();
 		this.fileName=file;
 	}
-	
-	
+
+
 	public void loadFile(){
-	
+
 		this.fileContent="";
 		try{
 			File file = new File(this.fileName);
 			Scanner sc = new Scanner(file);
 			while(sc.hasNext()){
-			
+
 				fileContent += sc.nextLine();
 				fileContent += "\n";
-			
+
 			}
 		sc.close();
 		}
 		catch(FileNotFoundException e){
-			
+
 			System.out.println("There is no file like "+this.fileName);
-		
+
 		}
-	
-		
+
+
 	}
 
 	public void splitFileContent(){
-	
+	    listOfUsers=new ArrayList<>();
 		this.splitedFileContent=this.fileContent.split("\\r?\\n");
 		for(String line : splitedFileContent){
 			this.listOfUsers.add(line.split("\\|"));
 		}
-	}	
-	
+	}
+
 	public List<String[]> listOfUsers(){
-	
-	
+
+
 		loadFile();
 		splitFileContent();
-	
+
 		return this.listOfUsers;
 	}
 
-	
+
 }
