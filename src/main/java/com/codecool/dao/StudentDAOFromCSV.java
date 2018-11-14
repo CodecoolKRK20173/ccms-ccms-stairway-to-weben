@@ -42,6 +42,7 @@ public class StudentDAOFromCSV implements StudentDAO{
         return listOfBaseStudents;
     }
 
+    @Override
     public List<Student> getListOfStudents(){
         List<String[]> result = this.fileParser.listOfUsers();
 
@@ -51,6 +52,7 @@ public class StudentDAOFromCSV implements StudentDAO{
         return listOfStudents;
     }
 
+    @Override
     public List<Student> getAddresses(){
         List<String[]> result = this.fileParser.listOfUsers();
 
@@ -60,6 +62,7 @@ public class StudentDAOFromCSV implements StudentDAO{
         return listOfAddresses;
     }
 
+    @Override
     public List<Student> getListOfStudentsByGroup(String groupClass){
         List<String[]> result = this.fileParser.listOfUsers();
 
@@ -71,6 +74,7 @@ public class StudentDAOFromCSV implements StudentDAO{
         return listOfStudentsByGroup;
     }
 
+    @Override
     public List<Student> addStudent(String id, String login, String password, String name, String surname, String groupClass, String address, String email){
         List<Student> result = convertToStudent();
 
@@ -79,6 +83,7 @@ public class StudentDAOFromCSV implements StudentDAO{
         return result;
     }
 
+    @Override
     public List<Student> removeStudent(String id){
         List<Student> list = convertToStudent();
 
@@ -91,6 +96,7 @@ public class StudentDAOFromCSV implements StudentDAO{
         return list;
     }
 
+    @Override
     public List<Student> editStudent(String idOld, String idNew, String login, String password, String name, String surname, String groupClass, String address, String email){
         List<Student> list = convertToStudent();
 
@@ -104,6 +110,7 @@ public class StudentDAOFromCSV implements StudentDAO{
         return list;
     }
 
+    @Override
     public Map<String, Integer> getGradesForYourAssignments(){
         List<String[]> result = fileParserForMap.listOfUsers();
 
@@ -116,6 +123,7 @@ public class StudentDAOFromCSV implements StudentDAO{
         return hashMapOfGradesWithAssignments;
     }
 
+    @Override
     public List<String> getNotEvaluatedAssignments(){
         List<String[]> result = fileParserForMap.listOfUsers();
 
