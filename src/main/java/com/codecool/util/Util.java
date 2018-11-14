@@ -1,17 +1,37 @@
 package com.codecool.util;
 
-import java.util.Random;
+import com.codecool.dao.FileParser;
+
+import java.util.List;
+import java.util.UUID;
 
 public class Util {
 
-    Random rand = new Random();
+    private List<String[]> usersList;
+    private FileParser fileParser;
 
-    public void createId(){
+    private String createId(){ return UUID.randomUUID().toString(); }
 
+    private boolean checkIfIdIsUnique(String id){
+        fileParser = new FileParser("Workers");
+        usersList = fileParser.listOfUsers();
+
+        for (String[] user : usersList) {
+            if(user[0].equals(id)) {
+                return false;
+            }
+        }
+        return true;
     }
 
-    public boolean checkIfIdIsUnique(String id){
-        return false;
+    public String getNewId(){
+        String idToCheck = createId();
+        if(checkIfIdIsUnique(idToCheck)){
+            return idToCheck;
+            } else {
+            getNewId();
+            }
+        }
     }
 
 }
