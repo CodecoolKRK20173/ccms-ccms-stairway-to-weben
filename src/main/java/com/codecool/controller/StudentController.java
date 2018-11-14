@@ -2,7 +2,6 @@ package com.codecool.controller;
 
 import com.codecool.dao.StudentDAO;
 import com.codecool.dao.StudentDAOFromCSV;
-
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +47,4 @@ public class StudentController {
         }
         return sum / myGrades.size();
     }
-
-
 }
