@@ -1,5 +1,6 @@
 package com.codecool.view;
 
+import com.codecool.model.RegularEmployee;
 import com.codecool.model.Student;
 
 import java.util.List;
@@ -41,4 +42,18 @@ public class RegularEmployeeView {
         }
         System.out.println("-------------------------------------------------------------------------------");
     }
+
+    public void printRegularEmployeeTable(List<RegularEmployee> regularEmployeesList) {
+        System.out.println("-------------------------------------------------------------------------------");
+        System.out.printf("%10s %15s %20s", "ID", "NAME", "SURNAME");
+        System.out.println();
+        System.out.println("-------------------------------------------------------------------------------");
+        for(RegularEmployee regularEmployee: regularEmployeesList){
+            System.out.format("%10s %15s %20s",
+                regularEmployee.getId(), regularEmployee.getName(), regularEmployee.getSurname());
+            System.out.println();
+        }
+        System.out.println("-------------------------------------------------------------------------------");
+    }
 }
+

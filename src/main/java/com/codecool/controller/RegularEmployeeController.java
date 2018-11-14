@@ -4,6 +4,7 @@ import com.codecool.dao.RegularEmployeeDAO;
 import com.codecool.dao.RegularEmployeeDAOFromCSV;
 import com.codecool.dao.StudentDAO;
 import com.codecool.dao.StudentDAOFromCSV;
+import com.codecool.model.RegularEmployee;
 import com.codecool.model.Student;
 import com.codecool.view.RegularEmployeeView;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class RegularEmployeeController {
 
+    private RegularEmployeeDAO regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
     private RegularEmployeeView regularEmployeeView = new RegularEmployeeView();
     private StudentDAO studentDAO= new StudentDAOFromCSV();
 
@@ -49,4 +51,10 @@ public class RegularEmployeeController {
         List<Student> studentsData = studentDAO.convertToStudent();
         regularEmployeeView.printTable(studentsData);
     }
+
+    private void showRegularEmployeesTable(){
+        List<RegularEmployee> regularEmployeesData = regularEmployeeDAO.getListOfEmployees();
+        regularEmployeeView.printRegularEmployeeTable(regularEmployeesData);
+    }
 }
+
