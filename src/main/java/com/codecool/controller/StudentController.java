@@ -9,7 +9,7 @@ import java.util.Map;
 public class StudentController {
 
     private StudentDAOFromCSV studentDAOFromCSV;
-    
+
     public StudentController(){
         this.studentDAOFromCSV = new StudentDAOFromCSV();
     }
@@ -48,12 +48,5 @@ public class StudentController {
             sum += value;
         }
         return sum / myGrades.size();
-    }
-
-    public static void main(String[] args) {
-        StudentController studentController = new StudentController();
-
-        double average = studentController.getAverageFromGrades();
-        System.out.println("Average of grades: " + average);
     }
 }
