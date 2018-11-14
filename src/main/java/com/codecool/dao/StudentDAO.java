@@ -15,5 +15,5 @@ public interface StudentDAO {
     Map<String, Integer> getGradesForYourAssignments();
     List<String> getNotEvaluatedAssignments();
     List<Student> addStudent(String id, String login, String password, String name, String surname, String groupClass, String address, String email);
-
+    List<Student> convertToStudent();
 }
