@@ -10,10 +10,10 @@ public interface StudentDAO {
     List<Student> getListOfStudents();
     List<Student> getAddresses();
     List<Student> getListOfStudentsByGroup(String groupClass);
-    List<Student> removeStudent(String id);
+    void removeStudent();
     List<Student> editStudent(String idOld, String idNew, String login, String password, String name, String surname, String groupClass, String address, String email);
     Map<String, Integer> getGradesForYourAssignments();
     List<String> getNotEvaluatedAssignments();
-    List<Student> addStudent(String id, String login, String password, String name, String surname, String groupClass, String address, String email);
+    void addStudent();
     List<Student> convertToStudent();
 }

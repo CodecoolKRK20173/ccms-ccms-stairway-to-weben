@@ -83,7 +83,6 @@ public class MentorDAOFromCSV implements MentorDAO{
         surname = mentorView.input();
         mentor = new Mentor(id,userName,password,name,surname,3);
         String toStringMentor = toString(mentor);
-        System.out.println(toStringMentor);
         fileParser.addNewRecord(toStringMentor);
     }
 

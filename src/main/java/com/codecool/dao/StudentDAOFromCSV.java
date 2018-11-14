@@ -1,6 +1,8 @@
 package com.codecool.dao;
 
 import com.codecool.model.Student;
+import com.codecool.util.LogIn;
+import com.codecool.view.StudentView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,11 +16,14 @@ public class StudentDAOFromCSV implements StudentDAO{
     private Student student;
     private List<Student> listOfStudents;
     private List<Student> listOfAddresses;
+    private List<String []> listOfArrays;
     private List<Student> listOfStudentsByGroup;
     private List<Student> listOfBaseStudents;
     private List<Student> listOfAddStudent;
     private Map<String, Integer> hashMapOfGradesWithAssignments;
     private List<String> listWithNotEvaluatedAssignments;
+    private StudentView studentView = new StudentView();
+    private LogIn logIn = new LogIn();
 
     public StudentDAOFromCSV(){
         this.listOfStudents = new ArrayList<>();
@@ -74,27 +79,73 @@ public class StudentDAOFromCSV implements StudentDAO{
         }
         return listOfStudentsByGroup;
     }
-
-    @Override
-    public List<Student> addStudent(String id, String login, String password, String name, String surname, String groupClass, String address, String email){
-        List<Student> result = convertToStudent();
-
-        result.add(new Student(id, login, password, name, surname, groupClass, address, email));
-
-        return result;
+    public String toString(Student student){
+        String newStudent = "";
+        newStudent += student.getId();
+        newStudent += "|";
+        newStudent += student.getUserName();
+        newStudent += "|";
+        newStudent += student.getPassword();
+        newStudent += "|";
+        newStudent += student.getName();
+        newStudent += "|";
+        newStudent += student.getSurname();
+        newStudent += "|";
+        newStudent += "4";
+        newStudent += "|";
+        newStudent += student.getAddress();
+        newStudent += "|";
+        newStudent += student.getEmail();
+        newStudent += "|";
+        return  newStudent;
     }
 
     @Override
-    public List<Student> removeStudent(String id){
-        List<Student> list = convertToStudent();
+    public void addStudent(){
+        Student student = null;
+        String id;
+        String login;
+        String password;
+        String name;
+        String surname;
+        String group;
+        String address;
+        String email;
+        studentView.print("Enter id: ");
+        id = studentView.input();
+        do {
+            studentView.print("Enter user name: ");
+            login = studentView.input();
+        }while (logIn.doNotDuplicateNickNames(login));
+        studentView.print("Enter your password: ");
+        password = studentView.input();
+        studentView.print("Enter your name: ");
+        name = studentView.input();
+        studentView.print("Enter your surname: ");
+        surname = studentView.input();
+        studentView.print("Enter your address: ");
+        address = studentView.input();
+        studentView.print("Enter your email: ");
+        email = studentView.input();
+        student = new Student(id,login,password,name,surname,"4",address,email);
+        String toStringMentor = toString(student);
+        fileParser.addNewRecord(toStringMentor);
+    }
 
-        for(Student student: list){
-            if(student.getId().equalsIgnoreCase(id)){
-                list.remove(student);
-                break;
+    @Override
+    public void removeStudent() {
+        String nick = "";
+        studentView.print("Enter student's nick to delete it");
+        nick = studentView.input();
+        this.listOfArrays = fileParser.listOfUsers();
+        for (int i = 0; i <listOfArrays.size() ; i++) {
+            if(listOfArrays.get(i)[1].equals(nick)){
+                listOfArrays.remove(i);
             }
         }
-        return list;
+        fileParser.saveUploadedListInFile(listOfArrays);
+
+
     }
 
     @Override

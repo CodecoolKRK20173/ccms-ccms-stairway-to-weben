@@ -1,33 +1,32 @@
 package com.codecool.controller;
 
+import com.codecool.dao.StudentDAO;
 import com.codecool.dao.StudentDAOFromCSV;
-import com.sun.xml.internal.ws.wsdl.parser.MemberSubmissionAddressingWSDLParserExtension;
 
 import java.util.List;
 import java.util.Map;
 
 public class StudentController {
-
-    private StudentDAOFromCSV studentDAOFromCSV;
+    private StudentDAO studentDAO;
     
     public StudentController(){
-        this.studentDAOFromCSV = new StudentDAOFromCSV();
+        this.studentDAO = new StudentDAOFromCSV();
     }
 
     public Map<String, Integer> showMyGrades(){
-        Map<String, Integer> myGrades = this.studentDAOFromCSV.getGradesForYourAssignments();
+        Map<String, Integer> myGrades = this.studentDAO.getGradesForYourAssignments();
 
         return myGrades;
     }
 
     public List<String> showAvailableAssignments(){
-        List<String> listOfAvailableAssignments = this.studentDAOFromCSV.getNotEvaluatedAssignments();
+        List<String> listOfAvailableAssignments = this.studentDAO.getNotEvaluatedAssignments();
 
         return listOfAvailableAssignments;
     }
 
     public String chooseAssignments(String name) throws Exception {
-        List<String> listOfAvailableAssignments = this.studentDAOFromCSV.getNotEvaluatedAssignments();
+        List<String> listOfAvailableAssignments = this.studentDAO.getNotEvaluatedAssignments();
 
         for(String element: listOfAvailableAssignments){
             if(element.equalsIgnoreCase(name)){
@@ -38,7 +37,7 @@ public class StudentController {
     }
 
     public double getAverageFromGrades(){
-        Map<String, Integer> myGrades = this.studentDAOFromCSV.getGradesForYourAssignments();
+        Map<String, Integer> myGrades = this.studentDAO.getGradesForYourAssignments();
 
         int sum = 0;
 
@@ -50,10 +49,5 @@ public class StudentController {
         return sum / myGrades.size();
     }
 
-    public static void main(String[] args) {
-        StudentController studentController = new StudentController();
 
-        double average = studentController.getAverageFromGrades();
-        System.out.println("Average of grades: " + average);
-    }
 }

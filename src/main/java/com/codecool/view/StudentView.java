@@ -5,6 +5,7 @@ import com.codecool.dao.StudentDAOFromCSV;
 import com.codecool.model.Student;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class StudentView {
     public void printUnderConstruction(){
@@ -39,5 +40,14 @@ public class StudentView {
                 // TO DO
                 break;
         }
+    }
+    public void print(String text){
+        System.out.println(text);
+    }
+    public String input(){
+        String input = "";
+        Scanner sc = new Scanner(System.in);
+        input = sc.nextLine();
+        return  input;
     }
 }
