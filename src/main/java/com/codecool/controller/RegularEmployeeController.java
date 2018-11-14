@@ -10,12 +10,9 @@ import com.codecool.view.RegularEmployeeView;
 import java.util.List;
 
 public class RegularEmployeeController {
-    private RegularEmployeeDAO regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
+
     private RegularEmployeeView regularEmployeeView = new RegularEmployeeView();
     private StudentDAO studentDAO= new StudentDAOFromCSV();
-    public RegularEmployeeController(){
-
-    }
 
     public void start(){
         regularEmployeeView.printMenu();
@@ -35,6 +32,12 @@ public class RegularEmployeeController {
                 regularEmployeeView.printUnderConstruction();
                 break;
             case 4:
+                regularEmployeeView.printUnderConstruction();
+                break;
+            case 5:
+                regularEmployeeView.printUnderConstruction();
+                break;
+            case 6:
                 regularEmployeeView.printUnderConstruction();
                 break;
             case 0:

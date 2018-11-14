@@ -16,6 +16,8 @@ public class RegularEmployeeView {
         System.out.println("2. Check coffee status");
         System.out.println("3. Check office supplies");
         System.out.println("4. Billing system");
+        System.out.println("5. Business trips");
+        System.out.println("6. Outsourcing");
         System.out.println("0. Log out");
     }
 
