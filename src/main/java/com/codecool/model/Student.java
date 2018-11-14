@@ -15,13 +15,13 @@ public class Student implements User{
     private String address;
     private String attendance;
     private String groupClass;
-    private Map<String, Integer> grades;
+    private Map<String, Integer> grades = new HashMap<>();
 
     public Student(){
 
     }
 
-    public Student(String id, String login, String password, String name, String surname, String email, String address, String groupClass){
+    public Student(String id, String login, String password, String name, String surname, String groupClass, String address, String email){
         this.id = id;
         this.login = login;
         this.password = password;

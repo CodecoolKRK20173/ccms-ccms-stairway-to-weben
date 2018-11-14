@@ -8,15 +8,12 @@ import java.util.Map;
 public interface StudentDAO {
 
     List<Student> getListOfStudents();
-    Map<String, Integer> getGrades();
     List<Student> getAddresses();
-    List<Student> getListOfStudentsByGroup();
-    List<Student> changeGrade();
-    List<Student> getListOfAttendance();
-    List<Student> addStudentToGroupClass();
-    List<Student> addStudent();
-    List<Student> removeStudent();
-    List<Student> editStudent();
-    List<Student> showListOfGrades();
-    List<Student> convertToStudent();
+    List<Student> getListOfStudentsByGroup(String groupClass);
+    List<Student> removeStudent(String id);
+    List<Student> editStudent(String idOld, String idNew, String login, String password, String name, String surname, String groupClass, String address, String email);
+    Map<String, Integer> getGradesForYourAssignments();
+    List<String> getNotEvaluatedAssignments();
+    List<Student> addStudent(String id, String login, String password, String name, String surname, String groupClass, String address, String email);
+
 }

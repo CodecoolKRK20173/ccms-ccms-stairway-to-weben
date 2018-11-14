@@ -3,18 +3,22 @@ package com.codecool.dao;
 import com.codecool.model.Student;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StudentDAOFromCSV implements StudentDAO {
+public class StudentDAOFromCSV implements StudentDAO{
 
     private FileParser fileParser;
+    private FileParser fileParserForMap;
     private Student student;
     private List<Student> listOfStudents;
     private List<Student> listOfAddresses;
     private List<Student> listOfStudentsByGroup;
     private List<Student> listOfBaseStudents;
     private List<Student> listOfAddStudent;
+    private Map<String, Integer> hashMapOfGradesWithAssignments;
+    private List<String> listWithNotEvaluatedAssignments;
 
     public StudentDAOFromCSV(){
         this.listOfStudents = new ArrayList<>();
@@ -22,8 +26,11 @@ public class StudentDAOFromCSV implements StudentDAO {
         this.listOfStudentsByGroup = new ArrayList<>();
         this.listOfBaseStudents = new ArrayList<>();
         this.listOfAddStudent = new ArrayList<>();
+        this.hashMapOfGradesWithAssignments = new HashMap<>();
+        this.listWithNotEvaluatedAssignments = new ArrayList<>();
         this.student = new Student();
         this.fileParser = new FileParser("/home/hubert/Pulpit/ccms-ccms-stairway-to-weben/src/main/java/com/codecool/student.csv");
+        this.fileParserForMap = new FileParser("/home/hubert/Pulpit/ccms-ccms-stairway-to-weben/src/main/java/com/codecool/assignment.csv");
     }
 
     public List<Student> convertToStudent() {
@@ -35,88 +42,48 @@ public class StudentDAOFromCSV implements StudentDAO {
         return listOfBaseStudents;
     }
 
+    @Override
     public List<Student> getListOfStudents(){
         List<String[]> result = this.fileParser.listOfUsers();
 
         for(String[] element: result){
-            listOfStudents.add(new Student(element[0], "", "", element[3], element[4], "", "", element[7]));
+            listOfStudents.add(new Student(element[0], "", "", element[3], element[4], element[5], "", ""));
         }
         return listOfStudents;
     }
 
     @Override
-    public Map<String, Integer> getGrades() {
-        return null;
-    }
-
     public List<Student> getAddresses(){
         List<String[]> result = this.fileParser.listOfUsers();
 
         for(String[] element: result){
-            listOfAddresses.add(new Student(element[0], "", "", element[3], element[4], "", element[6], ""));
+            listOfAddresses.add(new Student(element[0], "", "", element[3], element[4], "", "", element[7]));
         }
         return listOfAddresses;
     }
 
     @Override
-    public List<Student> getListOfStudentsByGroup() {
-        return null;
-    }
-
-    @Override
-    public List<Student> changeGrade() {
-        return null;
-    }
-
-    @Override
-    public List<Student> getListOfAttendance() {
-        return null;
-    }
-
-    @Override
-    public List<Student> addStudentToGroupClass() {
-        return null;
-    }
-
-    @Override
-    public List<Student> addStudent() {
-        return null;
-    }
-
-    @Override
-    public List<Student> removeStudent() {
-        return null;
-    }
-
-    @Override
-    public List<Student> editStudent() {
-        return null;
-    }
-
-    @Override
-    public List<Student> showListOfGrades() {
-        return null;
-    }
-
     public List<Student> getListOfStudentsByGroup(String groupClass){
         List<String[]> result = this.fileParser.listOfUsers();
 
         for(String[] element: result){
             if(groupClass.equals(element[7])){
-                listOfStudentsByGroup.add(new Student(element[0], "", "", element[3], element[4], "", "", element[7]));
+                listOfStudentsByGroup.add(new Student(element[0], "", "", element[3], element[4], element[5], "", element[7]));
             }
         }
         return listOfStudentsByGroup;
     }
 
-    public List<Student> addStudentToGroupClass(String id, String login, String password, String name, String surname, String email, String address, String groupClass){
-        List<Student> listAfterConverting = convertToStudent();
+    @Override
+    public List<Student> addStudent(String id, String login, String password, String name, String surname, String groupClass, String address, String email){
+        List<Student> result = convertToStudent();
 
-        listAfterConverting.add(new Student(id, login, password, name, surname, email, address, groupClass));
+        result.add(new Student(id, login, password, name, surname, groupClass, address, email));
 
-        return listAfterConverting;
+        return result;
     }
 
+    @Override
     public List<Student> removeStudent(String id){
         List<Student> list = convertToStudent();
 
@@ -129,7 +96,8 @@ public class StudentDAOFromCSV implements StudentDAO {
         return list;
     }
 
-    public List<Student> editStudent(String idOld, String idNew, String login, String password, String name, String surname, String email, String address, String groupClass){
+    @Override
+    public List<Student> editStudent(String idOld, String idNew, String login, String password, String name, String surname, String groupClass, String address, String email){
         List<Student> list = convertToStudent();
 
         for(Student student: list){
@@ -138,8 +106,32 @@ public class StudentDAOFromCSV implements StudentDAO {
                 break;
             }
         }
-        list.add(new Student(idNew, login, password, name, surname, email, address, groupClass));
+        list.add(new Student(idNew, login, password, name, surname, groupClass, address, email));
         return list;
     }
 
+    @Override
+    public Map<String, Integer> getGradesForYourAssignments(){
+        List<String[]> result = fileParserForMap.listOfUsers();
+
+        for(String[] element: result){
+            if(element[1].equalsIgnoreCase("0")){
+                continue;
+            }
+            hashMapOfGradesWithAssignments.put(element[0], Integer.parseInt(element[1]));
+        }
+        return hashMapOfGradesWithAssignments;
+    }
+
+    @Override
+    public List<String> getNotEvaluatedAssignments(){
+        List<String[]> result = fileParserForMap.listOfUsers();
+
+        for(String[] element: result){
+            if(element[1].equalsIgnoreCase("0")){
+                listWithNotEvaluatedAssignments.add(element[0]);
+            }
+        }
+        return listWithNotEvaluatedAssignments;
+    }
 }
