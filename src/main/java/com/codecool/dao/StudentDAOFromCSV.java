@@ -4,8 +4,9 @@ import com.codecool.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class StudentDAOFromCSV {
+public class StudentDAOFromCSV implements StudentDAO {
 
     private FileParser fileParser;
     private Student student;
@@ -43,6 +44,11 @@ public class StudentDAOFromCSV {
         return listOfStudents;
     }
 
+    @Override
+    public Map<String, Integer> getGrades() {
+        return null;
+    }
+
     public List<Student> getAddresses(){
         List<String[]> result = this.fileParser.listOfUsers();
 
@@ -50,6 +56,46 @@ public class StudentDAOFromCSV {
             listOfAddresses.add(new Student(element[0], "", "", element[3], element[4], "", element[6], ""));
         }
         return listOfAddresses;
+    }
+
+    @Override
+    public List<Student> getListOfStudentsByGroup() {
+        return null;
+    }
+
+    @Override
+    public List<Student> changeGrade() {
+        return null;
+    }
+
+    @Override
+    public List<Student> getListOfAttendance() {
+        return null;
+    }
+
+    @Override
+    public List<Student> addStudentToGroupClass() {
+        return null;
+    }
+
+    @Override
+    public List<Student> addStudent() {
+        return null;
+    }
+
+    @Override
+    public List<Student> removeStudent() {
+        return null;
+    }
+
+    @Override
+    public List<Student> editStudent() {
+        return null;
+    }
+
+    @Override
+    public List<Student> showListOfGrades() {
+        return null;
     }
 
     public List<Student> getListOfStudentsByGroup(String groupClass){

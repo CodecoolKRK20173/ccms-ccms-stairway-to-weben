@@ -5,7 +5,7 @@ import com.codecool.model.Student;
 import java.util.List;
 import java.util.Map;
 
-public interface IStudentDAO {
+public interface StudentDAO {
 
     List<Student> getListOfStudents();
     Map<String, Integer> getGrades();
