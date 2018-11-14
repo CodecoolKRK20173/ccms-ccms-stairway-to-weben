@@ -12,7 +12,7 @@ public class RegularEmployeeController {
 
     private RegularEmployeeDAO regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
     private RegularEmployeeView regularEmployeeView = new RegularEmployeeView();
-    private StudentDAO studentDAO = new StudentDAO(); //TODO FromCSV();
+    private StudentDAO studentDAO = new StudentDAOFromCSV();
 
     public RegularEmployeeController(){
 

@@ -5,7 +5,7 @@ import com.codecool.model.Student;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDAO {
+public class StudentDAOFromCSV {
 
     private FileParser fileParser;
     private Student student;

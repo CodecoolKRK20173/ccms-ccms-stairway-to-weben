@@ -78,7 +78,7 @@ public class FileParser {
 	}
 
 	public void addNewRecord(String[] newRecord){
-        String newRecordToFile = String.join("|", newRecord);
+        String newRecordToFile = String.join("|", newRecord) + "|";
         addNewRecord(newRecordToFile);
     }
 	
