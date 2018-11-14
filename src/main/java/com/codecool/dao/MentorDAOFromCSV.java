@@ -17,7 +17,7 @@ public class MentorDAOFromCSV implements MentorDAO{
     private LogIn logIn = new LogIn();
 
     public MentorDAOFromCSV(){
-        this.fileParser = new FileParser("/home/trauke/codecool/javaa/6tw/ccms-ccms-stairway-to-weben/src/main/java/com/codecool/dao/Workers");
+        this.fileParser = new FileParser("src/main/java/com/codecool/dao/Workers");
         this.listOfArrays = new ArrayList<>();
     }
     @Override

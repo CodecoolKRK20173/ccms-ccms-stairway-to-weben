@@ -30,8 +30,8 @@ public class Util {
             return idToCheck;
             } else {
             getNewId();
-            }
-        }
+            }return null;
     }
+
 
 }

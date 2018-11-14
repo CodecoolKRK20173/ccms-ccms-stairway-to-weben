@@ -45,4 +45,16 @@ public class MentorView {
         }
         System.out.println("-------------------------------------------------------------------------------");
     }
+    public void printMentorTable(List<Mentor> mentorsList) {
+        System.out.println("-------------------------------------------------------------------------------");
+        System.out.printf("%10s %15s %20s", "ID", "NAME", "SURNAME");
+        System.out.println();
+        System.out.println("-------------------------------------------------------------------------------");
+        for(Mentor mentor: mentorsList){
+            System.out.format("%10s %15s %20s",
+                mentor.getId(), mentor.getName(), mentor.getSurname());
+            System.out.println();
+        }
+        System.out.println("-------------------------------------------------------------------------------");
+    }
 }

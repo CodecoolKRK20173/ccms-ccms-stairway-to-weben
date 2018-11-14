@@ -17,7 +17,7 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
     private LogIn logIn = new LogIn();
 
     public RegularEmployeeDAOFromCSV(){
-        fileParser = new FileParser("Workers");
+        fileParser = new FileParser("src/main/java/com/codecool/dao/Workers");
         usersList = fileParser.listOfUsers();
     }
 

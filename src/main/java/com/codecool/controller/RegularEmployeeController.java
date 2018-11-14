@@ -52,9 +52,6 @@ public class RegularEmployeeController {
         regularEmployeeView.printTable(studentsData);
     }
 
-    private void showRegularEmployeesTable(){
-        List<RegularEmployee> regularEmployeesData = regularEmployeeDAO.getListOfEmployees();
-        regularEmployeeView.printRegularEmployeeTable(regularEmployeesData);
-    }
+
 }
 

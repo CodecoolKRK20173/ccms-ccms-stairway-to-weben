@@ -22,10 +22,11 @@ public class StudentDAOFromCSV implements StudentDAO{
     private List<Student> listOfAddStudent;
     private Map<String, Integer> hashMapOfGradesWithAssignments;
     private List<String> listWithNotEvaluatedAssignments;
-    private StudentView studentView = new StudentView();
+    private StudentView studentView;
     private LogIn logIn = new LogIn();
 
     public StudentDAOFromCSV(){
+        this.studentView  = new StudentView();
         this.listOfStudents = new ArrayList<>();
         this.listOfAddresses = new ArrayList<>();
         this.listOfStudentsByGroup = new ArrayList<>();
@@ -34,8 +35,8 @@ public class StudentDAOFromCSV implements StudentDAO{
         this.hashMapOfGradesWithAssignments = new HashMap<>();
         this.listWithNotEvaluatedAssignments = new ArrayList<>();
         this.student = new Student();
-        this.fileParser = new FileParser("/home/hubert/Pulpit/ccms-ccms-stairway-to-weben/src/main/java/com/codecool/student.csv");
-        this.fileParserForMap = new FileParser("/home/hubert/Pulpit/ccms-ccms-stairway-to-weben/src/main/java/com/codecool/assignment.csv");
+        this.fileParser = new FileParser("src/main/java/com/codecool/student.csv");
+        this.fileParserForMap = new FileParser("src/main/java/com/codecool/assignment.csv");
     }
 
     @Override

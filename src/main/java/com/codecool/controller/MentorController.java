@@ -57,4 +57,65 @@ public class MentorController {
         mentorView.printTable(studentsData);
     }
 
+    public void showAllInformationAboutStudents(){
+        List<Student> result = studentDAO.convertToStudent();
+
+        for(Student student: result){
+            System.out.println(student);
+        }
+    }
+
+    public void showListOfStudents(){
+        List<Student> result = studentDAO.getListOfStudents();
+
+        for(Student student: result){
+            System.out.println(student);
+        }
+    }
+
+    public void showAddressesOfStudents(){
+        List<Student> result = studentDAO.getAddresses();
+
+        for(Student student: result){
+            System.out.println(student);
+        }
+    }
+
+    public void showStudentInSpecifiedGroup(){
+        System.out.print("Enter group class: ");
+        String groupClass = mentorView.input();
+        List<Student> result = studentDAO.getListOfStudentsByGroup(groupClass);
+
+        for(Student student: result){
+            System.out.println(student);
+        }
+    }
+
+    public void showSystemOfEditStudent(){
+        System.out.print("Enter id of record: ");
+        String idOld = mentorView.input();
+        System.out.print("Enter new id: ");
+        String idNew = mentorView.input();
+        System.out.print("Enter new login: ");
+        String login = mentorView.input();
+        System.out.print("Enter new password: ");
+        String password = mentorView.input();
+        System.out.print("Enter new name: ");
+        String name = mentorView.input();
+        System.out.print("Enter new surname: ");
+        String surname = mentorView.input();
+        System.out.print("Enter new group class: ");
+        String groupClass = mentorView.input();
+        System.out.print("Enter new address: ");
+        String address = mentorView.input();
+        System.out.print("Enter new email: ");
+        String email = mentorView.input();
+
+        List<Student> result = studentDAO.editStudent(idOld, idNew, login, password, name, surname, groupClass, address, email);
+
+        for(Student student: result){
+            System.out.println(student);
+        }
+    }
+
 }
