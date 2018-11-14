@@ -55,7 +55,7 @@ public class StudentDAOFromCSV implements StudentDAO{
         List<String[]> result = this.fileParser.listOfUsers();
 
         for(String[] element: result){
-            listOfAddresses.add(new Student(element[0], "", "", element[3], element[4], "", element[6], ""));
+            listOfAddresses.add(new Student(element[0], "", "", element[3], element[4], "", "", element[7]));
         }
         return listOfAddresses;
     }
@@ -69,6 +69,14 @@ public class StudentDAOFromCSV implements StudentDAO{
             }
         }
         return listOfStudentsByGroup;
+    }
+
+    public List<Student> addStudent(String id, String login, String password, String name, String surname, String groupClass, String address, String email){
+        List<Student> result = convertToStudent();
+
+        result.add(new Student(id, login, password, name, surname, groupClass, address, email));
+
+        return result;
     }
 
     public List<Student> removeStudent(String id){

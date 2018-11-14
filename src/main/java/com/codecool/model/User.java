@@ -1,6 +1,6 @@
 package com.codecool.model;
 
-public abstract class User {
+public interface User {
 
     public abstract String getId();
 
