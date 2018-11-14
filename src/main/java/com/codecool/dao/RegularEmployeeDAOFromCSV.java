@@ -31,7 +31,6 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
                 password = user[2];
                 name = user[3];
                 surname = user[4];
-
                 RegularEmployee regularEmployee = new RegularEmployee(id, userName, password, name, surname, group);
                 return regularEmployee;
             }
@@ -66,7 +65,6 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
 
     private String[] createRecordFromEmployee(RegularEmployee employee) {
         String[] newEmployee = new String[6];
-
         newEmployee[0] = employee.getId();
         newEmployee[1] = employee.getUserName();
         newEmployee[2] = employee.getPassword();

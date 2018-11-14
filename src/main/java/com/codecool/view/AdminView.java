@@ -8,4 +8,7 @@ public class AdminView {
         System.out.println("4. Create mentor");
         System.out.println("0. Log out");
     }
+    public void printUnderConstruction(){
+        System.out.println("Under Construction.");
+    }
 }

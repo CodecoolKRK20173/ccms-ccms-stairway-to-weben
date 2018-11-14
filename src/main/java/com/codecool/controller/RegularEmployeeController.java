@@ -10,11 +10,9 @@ import com.codecool.view.RegularEmployeeView;
 import java.util.List;
 
 public class RegularEmployeeController {
-
     private RegularEmployeeDAO regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
     private RegularEmployeeView regularEmployeeView = new RegularEmployeeView();
     private StudentDAO studentDAO= new StudentDAOFromCSV();
-
     public RegularEmployeeController(){
 
     }
@@ -47,6 +45,5 @@ public class RegularEmployeeController {
     private void showStudentsTable(){
         List<Student> studentsData = studentDAO.convertToStudent();
         regularEmployeeView.printTable(studentsData);
-
     }
 }

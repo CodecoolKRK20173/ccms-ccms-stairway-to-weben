@@ -1,6 +1,9 @@
 package com.codecool.view;
 
 public class StudentView {
+    public void printUnderConstruction(){
+        System.out.println("Under Construction.");
+    }
 
     public void showStudentMenu(){
         System.out.println("1. Show list of students");

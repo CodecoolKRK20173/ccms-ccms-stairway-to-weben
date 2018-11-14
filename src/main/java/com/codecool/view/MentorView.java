@@ -26,4 +26,7 @@ public class MentorView {
         input = sc.nextLine();
         return  input;
     }
+    public void printUnderConstruction(){
+        System.out.println("Under Construction.");
+    }
 }
