@@ -18,31 +18,39 @@ public class StudentController {
 
     public void switchStudentMenu() {
         String choice;
-        choice=studentView.input();
-        switch(choice){
-            case "1":
-                showMyGradesView();
-                break;
-            case "2":
-                System.out.print("Enter assignment to evaluation");
-                String name = studentView.input();
-                String answer = "";
-                try{
-                answer = chooseAssignments(name);}
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-                System.out.println("Your assignment to evaluation: " + answer);
-                break;
-            case "3":
-                showAvailableAssaignmentsView();
-                break;
-            case "4":
-                getAverageFromMyGradesView();
-                break;
-            case "0":
-                // TO DO
-                break;
+        boolean imLogged = true;
+        while(imLogged){
+            studentView.showStudentMenu();
+            choice=studentView.input();
+            switch(choice){
+                case "1":
+                    showMyGradesView();
+                    studentView.input();
+                    break;
+                case "2":
+                    System.out.print("Enter assignment to evaluation: ");
+                    String name = studentView.input();
+                    String answer = "";
+                    try{
+                        answer = chooseAssignments(name);}
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    System.out.println("Your assignment to evaluation: " + answer);
+                    studentView.input();
+                    break;
+                case "3":
+                    showAvailableAssaignmentsView();
+                    studentView.input();
+                    break;
+                case "4":
+                    getAverageFromMyGradesView();
+                    studentView.input();
+                    break;
+                case "0":
+                    imLogged = false;
+                    break;
+            }
         }
     }
 
@@ -62,7 +70,7 @@ public class StudentController {
         List<String> listOfAvailableAssignments = this.studentDAO.getNotEvaluatedAssignments();
 
         for(String element: listOfAvailableAssignments){
-            if(element.equalsIgnoreCase(name)){
+            if(element.toLowerCase().contains(name.toLowerCase())){
                 return element;
             }
         }

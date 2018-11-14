@@ -17,33 +17,43 @@ public class RegularEmployeeController {
     private StudentDAO studentDAO= new StudentDAOFromCSV();
 
     public void start(){
-        regularEmployeeView.printMenu();
-        int actionNumber = regularEmployeeView.getUsersChoice();
-        performAction(actionNumber);
+        performAction();
     }
 
-    private void performAction(int actionNumber) {
-        switch (actionNumber){
-            case 1:
-                showStudentsTable();
-                break;
-            case 2:
-                regularEmployeeView.printUnderConstruction();
-                break;
-            case 3:
-                regularEmployeeView.printUnderConstruction();
-                break;
-            case 4:
-                regularEmployeeView.printUnderConstruction();
-                break;
-            case 5:
-                regularEmployeeView.printUnderConstruction();
-                break;
-            case 6:
-                regularEmployeeView.printUnderConstruction();
-                break;
-            case 0:
-                break;
+    private void performAction() {
+        boolean imLogged = true;
+        while(imLogged){
+                regularEmployeeView.printMenu();
+                String actionNumber = regularEmployeeView.input();
+            switch (actionNumber) {
+                case "1":
+                    showStudentsTable();
+                    regularEmployeeView.input();
+                    break;
+                case "2":
+                    regularEmployeeView.printUnderConstruction();
+                    regularEmployeeView.input();
+                    break;
+                case "3":
+                    regularEmployeeView.printUnderConstruction();
+                    regularEmployeeView.input();
+                    break;
+                case "4":
+                    regularEmployeeView.printUnderConstruction();
+                    regularEmployeeView.input();
+                    break;
+                case "5":
+                    regularEmployeeView.printUnderConstruction();
+                    regularEmployeeView.input();
+                    break;
+                case "6":
+                    regularEmployeeView.printUnderConstruction();
+                    regularEmployeeView.input();
+                    break;
+                case "0":
+                    imLogged = false;
+                    break;
+            }
         }
     }
 

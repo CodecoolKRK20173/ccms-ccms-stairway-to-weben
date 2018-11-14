@@ -33,22 +33,26 @@ public class MasterController {
         }return  groupNumber;
     }
     public void start(){
-        String groupNumber = logIn();
-        switch (groupNumber){
-            case "1":
-                adminController.start();
-                break;
-            case "2":
-                regularEmployeeController.start();
-                break;
-            case "3":
-                mentorController.start();
-                break;
-            case "4":
-                studentController.switchStudentMenu();
-                break;
-            case "0":
-                break;
+        boolean isWorking = true;
+        while(isWorking){
+            String groupNumber = logIn();
+            switch (groupNumber) {
+                case "1":
+                    adminController.start();
+                    break;
+                case "2":
+                    regularEmployeeController.start();
+                    break;
+                case "3":
+                    mentorController.start();
+                    break;
+                case "4":
+                    studentController.switchStudentMenu();
+                    break;
+                case "0":
+                    isWorking = false;
+                    break;
+                }
         }
     }
 }

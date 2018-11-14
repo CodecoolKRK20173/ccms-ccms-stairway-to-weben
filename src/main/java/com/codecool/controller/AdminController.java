@@ -24,35 +24,45 @@ public class AdminController {
     }
 
     public void start(){
-        adminView.showAdminMenu();
-        String actionNumber = adminView.input();
-        performAction(actionNumber);
+        performAction();
     }
-    private void performAction(String actionNumber) {
-        switch (actionNumber){
-            case "1":
-                showRegularEmployeesTable();
-                break;
-            case "2":
-                showMentorsTable();
-                break;
-            case "3":
-                regularEmployeeDAO.createEmployee();
-                break;
-            case "4":
-                mentorDAO.createMentor();
-                break;
-            case "5":
-                String userName;
-                adminView.print("Enter employee's nick to delete it");
-                userName = adminView.input();
-                regularEmployeeDAO.deleteEmployee(userName);
-                break;
-            case "6":
-                mentorDAO.deleteMentor();
-                break;
-            case "0":
-                break;
+    private void performAction() {
+        boolean imLogged = true;
+        while(imLogged){
+            adminView.showAdminMenu();
+            String actionNumber = adminView.input();
+            switch (actionNumber) {
+                case "1":
+                    showRegularEmployeesTable();
+                    adminView.input();
+                    break;
+                case "2":
+                    showMentorsTable();
+                    adminView.input();
+                    break;
+                case "3":
+                    regularEmployeeDAO.createEmployee();
+                    adminView.input();
+                    break;
+                case "4":
+                    mentorDAO.createMentor();
+                    adminView.input();
+                    break;
+                case "5":
+                    String userName;
+                    adminView.print("Enter employee's nick to delete it");
+                    userName = adminView.input();
+                    regularEmployeeDAO.deleteEmployee(userName);
+                    adminView.input();
+                    break;
+                case "6":
+                    mentorDAO.deleteMentor();
+                    adminView.input();
+                    break;
+                case "0":
+                    imLogged = false;
+                    break;
+            }
         }
     }
     private void showRegularEmployeesTable(){

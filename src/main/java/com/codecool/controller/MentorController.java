@@ -14,42 +14,46 @@ public class MentorController {
         this.studentDAO = new StudentDAOFromCSV();
     }
     public void start(){
-        mentorView.showMentorMenu();
-        String actionNumber = mentorView.input();
-        performAction(actionNumber);
+        performAction();
     }
 
-    private void performAction(String actionNumber) {
-        switch (actionNumber){
-            case "1":
-                showStudentsTable();
-                break;
-            case "2":
-                mentorView.printUnderConstruction();
-                break;
-            case "3":
-                mentorView.printUnderConstruction();
-                break;
-            case "4":
-                mentorView.printUnderConstruction();
-                break;
-            case "5":
-                mentorView.printUnderConstruction();
-                break;
-            case "6":
-                studentDAO.addStudent();
-                break;
-            case "7":
-                studentDAO.removeStudent();
-                break;
-            case "8":
-                mentorView.printUnderConstruction();
-                break;
-            case "9":
-                mentorView.printUnderConstruction();
-                break;
-            case "0":
-                break;
+    private void performAction() {
+        boolean imLogged = true;
+        while(imLogged){
+            mentorView.showMentorMenu();
+            String actionNumber = mentorView.input();
+            switch (actionNumber) {
+                case "1":
+                    showStudentsTable();
+                    break;
+                case "2":
+                    mentorView.printUnderConstruction();
+                    break;
+                case "3":
+                    mentorView.printUnderConstruction();
+                    break;
+                case "4":
+                    mentorView.printUnderConstruction();
+                    break;
+                case "5":
+                    mentorView.printUnderConstruction();
+                    break;
+                case "6":
+                    studentDAO.addStudent();
+                    break;
+                case "7":
+                    studentDAO.removeStudent();
+                    break;
+                case "8":
+                    mentorView.printUnderConstruction();
+                    break;
+                case "9":
+                    mentorView.printUnderConstruction();
+                    break;
+                case "0":
+                    imLogged = false;
+                    break;
+            }
         }
     }
     private void showStudentsTable(){

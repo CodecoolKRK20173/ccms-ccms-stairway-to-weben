@@ -24,8 +24,9 @@ public class LogIn{
 		listOfAllHumans.addAll(fileWorkers.listOfUsers());
 		listOfAllHumans.addAll(fileStudents.listOfUsers());
 		for(String[] user : listOfAllHumans){
-				if(user[nickPosition].equals(nick) && user[passwordPosition].equals(password))
-					return user[groupPosition];
+				if(user[nickPosition].equals(nick) && user[passwordPosition].equals(password)) {
+                    return user[groupPosition];
+                }
 		}
         System.out.println("Wrong login or password");
 		return "0";
