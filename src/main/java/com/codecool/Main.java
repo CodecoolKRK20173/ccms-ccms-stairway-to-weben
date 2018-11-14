@@ -14,3 +14,4 @@ public class Main {
         masterController.start();
     }
 }
+////java -cp target/ccms-ccms-stairway-to-weben.jar com.codecool.Main

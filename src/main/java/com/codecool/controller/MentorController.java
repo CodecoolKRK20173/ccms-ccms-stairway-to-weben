@@ -5,14 +5,17 @@ import com.codecool.dao.StudentDAOFromCSV;
 import com.codecool.model.Student;
 import com.codecool.view.MentorView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MentorController {
     private StudentDAO studentDAO;
     private MentorView mentorView = new MentorView();
+
     public MentorController(){
         this.studentDAO = new StudentDAOFromCSV();
     }
+
     public void start(){
         performAction();
     }
@@ -57,7 +60,8 @@ public class MentorController {
         }
     }
     private void showStudentsTable(){
-        List<Student> studentsData = studentDAO.convertToStudent();
+        List<Student> studentsData = new ArrayList<>();
+        studentsData = studentDAO.convertToStudent();
         mentorView.printTable(studentsData);
     }
 

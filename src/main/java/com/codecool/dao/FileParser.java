@@ -34,12 +34,10 @@ public class FileParser {
 		catch(FileNotFoundException e){
 			e.printStackTrace();
 		}
-	
-		
 	}
 
 	public void splitFileContent(){
-		listOfUsers=new ArrayList<>();
+		this.listOfUsers=new ArrayList<>();
 		this.splitedFileContent=this.fileContent.split("\\r?\\n");
 		for(String line : splitedFileContent){
 			this.listOfUsers.add(line.split("\\|"));

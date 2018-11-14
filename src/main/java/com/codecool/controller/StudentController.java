@@ -102,6 +102,7 @@ public class StudentController {
 
         for(String element: list){
             System.out.println(element);
+
         }
     }
 

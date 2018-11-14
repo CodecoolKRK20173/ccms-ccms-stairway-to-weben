@@ -3,7 +3,6 @@ package com.codecool.controller;
 
 import com.codecool.util.LogIn;
 import com.codecool.view.MasterView;
-import com.codecool.view.StudentView;
 
 public class MasterController {
     private StudentController studentController;

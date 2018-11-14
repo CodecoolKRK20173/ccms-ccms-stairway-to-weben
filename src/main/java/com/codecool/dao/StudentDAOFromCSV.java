@@ -41,8 +41,9 @@ public class StudentDAOFromCSV implements StudentDAO{
 
     @Override
     public List<Student> convertToStudent() {
-        List<String[]> result = this.fileParser.listOfUsers();
 
+        List<String[]> result = this.fileParser.listOfUsers();
+        this.listOfBaseStudents = new ArrayList<>();
         for(String[] element: result) {
             listOfBaseStudents.add(new Student(element[0], element[1], element[2], element[3], element[4], element[5], element[6], element[7]));
         }
