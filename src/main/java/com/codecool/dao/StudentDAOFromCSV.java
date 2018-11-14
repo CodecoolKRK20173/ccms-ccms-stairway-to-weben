@@ -16,7 +16,7 @@ public class StudentDAOFromCSV implements StudentDAO {
     private List<Student> listOfBaseStudents;
     private List<Student> listOfAddStudent;
 
-    public StudentDAO(){
+    public StudentDAOFromCSV(){
         this.listOfStudents = new ArrayList<>();
         this.listOfAddresses = new ArrayList<>();
         this.listOfStudentsByGroup = new ArrayList<>();

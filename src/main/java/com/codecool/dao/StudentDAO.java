@@ -18,4 +18,5 @@ public interface StudentDAO {
     List<Student> removeStudent();
     List<Student> editStudent();
     List<Student> showListOfGrades();
+    List<Student> convertToStudent();
 }
