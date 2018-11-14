@@ -12,9 +12,7 @@ public class LogIn{
 	
 	private List<String[]> listOfAllHumans;
 	public LogIn(){
-	
 		this.listOfAllHumans = new ArrayList<>();
-		
 	}
 	
 	public String findGroupByLogin(String nick, String password){
@@ -31,8 +29,8 @@ public class LogIn{
 			System.out.println(user[nickPosition]+" "+user[passwordPosition]);
 		}
 		return "Login or password is invalid";
-		
 	}
+
 	public Boolean doNotDuplicateNickNames(String nick){
 	    listOfAllHumans = new ArrayList<>();
 	    this.fileWorkers=new FileParser("/home/trauke/codecool/javaa/6tw/ccms-ccms-stairway-to-weben/src/main/java/com/codecool/dao/Workers");
@@ -47,5 +45,4 @@ public class LogIn{
             }
         }return false;
     }
-
 }

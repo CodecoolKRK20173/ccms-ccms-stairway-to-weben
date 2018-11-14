@@ -7,6 +7,9 @@ import com.codecool.model.Student;
 import java.util.List;
 
 public class StudentView {
+    public void printUnderConstruction(){
+        System.out.println("Under Construction.");
+    }
 
     private StudentDAOFromCSV studentDAOFromCSV;
 
