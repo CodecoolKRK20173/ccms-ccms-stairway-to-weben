@@ -22,11 +22,8 @@ public class StudentDAOFromCSV implements StudentDAO{
     private List<Student> listOfAddStudent;
     private Map<String, Integer> hashMapOfGradesWithAssignments;
     private List<String> listWithNotEvaluatedAssignments;
-    private StudentView studentView;
-    private LogIn logIn = new LogIn();
 
     public StudentDAOFromCSV(){
-        this.studentView  = new StudentView();
         this.listOfStudents = new ArrayList<>();
         this.listOfAddresses = new ArrayList<>();
         this.listOfStudentsByGroup = new ArrayList<>();
@@ -35,8 +32,8 @@ public class StudentDAOFromCSV implements StudentDAO{
         this.hashMapOfGradesWithAssignments = new HashMap<>();
         this.listWithNotEvaluatedAssignments = new ArrayList<>();
         this.student = new Student();
-        this.fileParser = new FileParser("src/main/java/com/codecool/student.csv");
-        this.fileParserForMap = new FileParser("src/main/java/com/codecool/assignment.csv");
+        this.fileParser = new FileParser("src/main/java/com/codecool/resources/student.csv");
+        this.fileParserForMap = new FileParser("src/main/java/com/codecool/resources/assignment.csv");
     }
 
     @Override
@@ -103,42 +100,13 @@ public class StudentDAOFromCSV implements StudentDAO{
     }
 
     @Override
-    public void addStudent(){
-        Student student = null;
-        String id;
-        String login;
-        String password;
-        String name;
-        String surname;
-        String group;
-        String address;
-        String email;
-        studentView.print("Enter id: ");
-        id = studentView.input();
-        do {
-            studentView.print("Enter user name: ");
-            login = studentView.input();
-        }while (logIn.doNotDuplicateNickNames(login));
-        studentView.print("Enter your password: ");
-        password = studentView.input();
-        studentView.print("Enter your name: ");
-        name = studentView.input();
-        studentView.print("Enter your surname: ");
-        surname = studentView.input();
-        studentView.print("Enter your address: ");
-        address = studentView.input();
-        studentView.print("Enter your email: ");
-        email = studentView.input();
-        student = new Student(id,login,password,name,surname,"4",address,email);
+    public void addStudent(Student student){
         String toStringMentor = toString(student);
         fileParser.addNewRecord(toStringMentor);
     }
 
     @Override
-    public void removeStudent() {
-        String nick = "";
-        studentView.print("Enter student's nick to delete it");
-        nick = studentView.input();
+    public void removeStudent(String nick) {
         this.listOfArrays = fileParser.listOfUsers();
         for (int i = 0; i <listOfArrays.size() ; i++) {
             if(listOfArrays.get(i)[1].equals(nick)){

@@ -2,6 +2,8 @@ package com.codecool.controller;
 
 import com.codecool.dao.StudentDAO;
 import com.codecool.dao.StudentDAOFromCSV;
+import com.codecool.model.Student;
+import com.codecool.util.LogIn;
 import com.codecool.view.StudentView;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.Map;
 public class StudentController {
     private StudentDAO studentDAO;
     private StudentView studentView = new StudentView();
+    private LogIn logIn = new LogIn();
     
     public StudentController(){
         this.studentDAO = new StudentDAOFromCSV();
@@ -53,11 +56,47 @@ public class StudentController {
             }
         }
     }
+    public Student createNewStudent(){
+        Student student = null;
+        String id;
+        String login;
+        String password;
+        String name;
+        String surname;
+        String group;
+        String address;
+        String email;
+        studentView.print("Enter id: ");
+        id = studentView.input();
+        do {
+            studentView.print("Enter user name: ");
+            login = studentView.input();
+        }while (logIn.doNotDuplicateNickNames(login));
+        studentView.print("Enter your password: ");
+        password = studentView.input();
+        studentView.print("Enter your name: ");
+        name = studentView.input();
+        studentView.print("Enter your surname: ");
+        surname = studentView.input();
+        studentView.print("Enter your address: ");
+        address = studentView.input();
+        studentView.print("Enter your email: ");
+        email = studentView.input();
+        student = new Student(id,login,password,name,surname,"4",address,email);
+        return student;
+    }
 
     public Map<String, Integer> showMyGrades(){
         Map<String, Integer> myGrades = this.studentDAO.getGradesForYourAssignments();
 
         return myGrades;
+    }
+
+    public String nickToRemove(){
+        String nick = "";
+        studentView.print("Enter student's nick to delete it");
+        nick = studentView.input();
+        return nick;
     }
 
     public List<String> showAvailableAssignments(){

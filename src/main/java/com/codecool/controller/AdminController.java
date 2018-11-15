@@ -18,6 +18,8 @@ public class AdminController {
     private AdminView adminView = new AdminView();
     private RegularEmployeeView regularEmployeeView = new RegularEmployeeView();
     private MentorView mentorView = new MentorView();
+    private MentorController mentorController = new MentorController();
+    private RegularEmployeeController regularEmployeeController = new RegularEmployeeController();
     public AdminController(){
     this.mentorDAO = new MentorDAOFromCSV();
     this.regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
@@ -41,11 +43,11 @@ public class AdminController {
                     adminView.input();
                     break;
                 case "3":
-                    regularEmployeeDAO.createEmployee();
+                    regularEmployeeDAO.createEmployee(regularEmployeeController.createNewEmployee());
                     adminView.input();
                     break;
                 case "4":
-                    mentorDAO.createMentor();
+                    mentorDAO.createMentor(mentorController.createNewMentor());
                     adminView.input();
                     break;
                 case "5":
@@ -56,7 +58,7 @@ public class AdminController {
                     adminView.input();
                     break;
                 case "6":
-                    mentorDAO.deleteMentor();
+                    mentorDAO.deleteMentor(mentorController.nickToRemove());
                     adminView.input();
                     break;
                 case "0":

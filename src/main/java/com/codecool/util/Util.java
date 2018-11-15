@@ -13,7 +13,7 @@ public class Util {
     private String createId(){ return UUID.randomUUID().toString(); }
 
     private boolean checkIfIdIsUnique(String id){
-        fileParser = new FileParser("Workers");
+        fileParser = new FileParser("src/main/java/com/codecool/resources/Workers");
         usersList = fileParser.listOfUsers();
 
         for (String[] user : usersList) {

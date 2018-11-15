@@ -10,7 +10,7 @@ public interface RegularEmployeeDAO {
 
     List<RegularEmployee> getListOfEmployees();
 
-    void createEmployee();
+    void createEmployee(RegularEmployee regularEmployee);
 
     void deleteEmployee(String userName);
 

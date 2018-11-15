@@ -1,8 +1,6 @@
 package com.codecool.dao;
 
 import com.codecool.model.Mentor;
-import com.codecool.util.LogIn;
-import com.codecool.view.MentorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +11,9 @@ public class MentorDAOFromCSV implements MentorDAO{
     private String MentorGroup = "3";
     private int MentorGroupNumber = 3;
     private Mentor mentor;
-    private MentorView mentorView = new MentorView();
-    private LogIn logIn = new LogIn();
 
     public MentorDAOFromCSV(){
-        this.fileParser = new FileParser("src/main/java/com/codecool/dao/Workers");
+        this.fileParser = new FileParser("src/main/java/com/codecool/resources/Workers");
         this.listOfArrays = new ArrayList<>();
     }
     @Override
@@ -61,36 +57,14 @@ public class MentorDAOFromCSV implements MentorDAO{
     }
 
     @Override
-    public void createMentor() {
-        Mentor mentor = null;
-        String id;
-        String userName;
-        String password;
-        String name;
-        String surname;
-        int group;
-        mentorView.print("Enter id: ");
-        id = mentorView.input();
-        do {
-            mentorView.print("Enter user name: ");
-            userName = mentorView.input();
-        }while (logIn.doNotDuplicateNickNames(userName));
-        mentorView.print("Enter your password: ");
-        password = mentorView.input();
-        mentorView.print("Enter your name: ");
-        name = mentorView.input();
-        mentorView.print("Enter your surname: ");
-        surname = mentorView.input();
-        mentor = new Mentor(id,userName,password,name,surname,3);
+    public void createMentor(Mentor mentor) {
         String toStringMentor = toString(mentor);
         fileParser.addNewRecord(toStringMentor);
     }
 
     @Override
-    public void deleteMentor() {
-        String nick = "";
-        mentorView.print("Enter mentor's nick to delete it");
-        nick = mentorView.input();
+    public void deleteMentor(String nick) {
+
         this.listOfArrays = fileParser.listOfUsers();
         for (int i = 0; i <listOfArrays.size() ; i++) {
             if(listOfArrays.get(i)[1].equals(nick)){

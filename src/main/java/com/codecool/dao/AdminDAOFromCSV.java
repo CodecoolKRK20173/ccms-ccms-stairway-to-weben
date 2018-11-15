@@ -13,14 +13,10 @@ public class AdminDAOFromCSV implements AdminDAO{
     private int AdminGroupNumber = 1;
 
     public AdminDAOFromCSV(FileParser fileParser) {
-        this.fileParser = new FileParser("src/main/java/com/codecool/dao/Workers");
+        this.fileParser = new FileParser("src/main/java/com/codecool/resources/Workers");
         listOfArrays = new ArrayList<>();
     }
 
-
-    public FileParser getFileParser() {
-        return fileParser;
-    }
 
     @Override
     public Admin getAdmin() {
