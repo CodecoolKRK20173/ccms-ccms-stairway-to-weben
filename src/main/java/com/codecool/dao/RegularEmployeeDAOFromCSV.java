@@ -1,8 +1,6 @@
 package com.codecool.dao;
 
 import com.codecool.model.RegularEmployee;
-import com.codecool.util.LogIn;
-import com.codecool.view.RegularEmployeeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,25 +57,9 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
     }
 
     @Override
-    public void createEmployee(RegularEmployee regularEmployee) {
-        String toStringRegularEmployee = toString(regularEmployee);
-        fileParser.addNewRecord(toStringRegularEmployee);
-    }
-    public String toString(RegularEmployee regularEmployee){
-        String newEmployee = "";
-        newEmployee += regularEmployee.getId();
-        newEmployee += "|";
-        newEmployee += regularEmployee.getUserName();
-        newEmployee += "|";
-        newEmployee += regularEmployee.getPassword();
-        newEmployee += "|";
-        newEmployee += regularEmployee.getName();
-        newEmployee += "|";
-        newEmployee += regularEmployee.getSurname();
-        newEmployee += "|";
-        newEmployee += "3";
-        newEmployee += "|";
-        return  newEmployee;
+    public void createEmployee(RegularEmployee employee) {
+        String[] newEmployee = createRecordFromEmployee(employee);
+        fileParser.addNewRecord(newEmployee);
     }
 
     private String[] createRecordFromEmployee(RegularEmployee employee) {
