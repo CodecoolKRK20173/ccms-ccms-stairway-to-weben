@@ -28,7 +28,7 @@ public class StudentController {
                     studentView.input();
                     break;
                 case "2":
-                    System.out.print("Enter assignment to evaluation: ");
+                    studentView.print("Enter assignment to evaluation: ");
                     String name = studentView.input();
                     String answer = "";
                     try{
@@ -36,7 +36,7 @@ public class StudentController {
                     catch (Exception e){
                         e.printStackTrace();
                     }
-                    System.out.println("Your assignment to evaluation: " + answer);
+                    studentView.print("Your assignment to evaluation: " + answer);
                     studentView.input();
                     break;
                 case "3":
@@ -93,7 +93,7 @@ public class StudentController {
         Map<String, Integer> mapGrades = showMyGrades();
 
         for (Map.Entry<String, Integer> entry : mapGrades.entrySet()) {
-            System.out.println(entry.getKey() + " - " + entry.getValue() + " grade");
+            studentView.print(entry.getKey() + " - " + entry.getValue() + " grade");
         }
     }
 
@@ -101,13 +101,13 @@ public class StudentController {
         List<String> list = showAvailableAssignments();
 
         for(String element: list){
-            System.out.println(element);
+            studentView.print(element);
 
         }
     }
 
     public void getAverageFromMyGradesView(){
         double average = getAverageFromGrades();
-        System.out.println("Average of your grades: " + average);
+        studentView.print("Average of your grades: " + average);
     }
 }
