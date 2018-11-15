@@ -1,6 +1,7 @@
 package com.codecool.controller;
 
 
+import com.codecool.dao.StudentDAOFromCSV;
 import com.codecool.util.LogIn;
 import com.codecool.view.MasterView;
 
@@ -15,7 +16,7 @@ public class MasterController {
 
     public MasterController() {
         this.studentController = new StudentController();
-        this.mentorController = new MentorController();
+        this.mentorController = new MentorController(new StudentDAOFromCSV());
         this.regularEmployeeController = new RegularEmployeeController();
         this.adminController = new AdminController();
         this.logIn = new LogIn();

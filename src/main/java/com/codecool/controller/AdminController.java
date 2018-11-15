@@ -1,9 +1,6 @@
 package com.codecool.controller;
 
-import com.codecool.dao.MentorDAO;
-import com.codecool.dao.MentorDAOFromCSV;
-import com.codecool.dao.RegularEmployeeDAO;
-import com.codecool.dao.RegularEmployeeDAOFromCSV;
+import com.codecool.dao.*;
 import com.codecool.model.Mentor;
 import com.codecool.model.RegularEmployee;
 import com.codecool.view.AdminView;
@@ -18,11 +15,12 @@ public class AdminController {
     private AdminView adminView = new AdminView();
     private RegularEmployeeView regularEmployeeView = new RegularEmployeeView();
     private MentorView mentorView = new MentorView();
-    private MentorController mentorController = new MentorController();
+    private MentorController mentorController;
     private RegularEmployeeController regularEmployeeController = new RegularEmployeeController();
     public AdminController(){
-    this.mentorDAO = new MentorDAOFromCSV();
-    this.regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
+        this.mentorController = new MentorController(new StudentDAOFromCSV());
+        this.mentorDAO = new MentorDAOFromCSV();
+        this.regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
     }
 
     public void start(){

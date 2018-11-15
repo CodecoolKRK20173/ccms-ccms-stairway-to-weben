@@ -16,8 +16,8 @@ public class MentorController {
     private LogIn logIn;
     private StudentController studentController ;
 
-    public MentorController(){
-        this.studentDAO = new StudentDAOFromCSV();
+    public MentorController(StudentDAO studentDAO){
+        this.studentDAO = studentDAO;
         this.logIn  = new LogIn();
         this.studentController = new StudentController();
         this.mentorView = new MentorView();
