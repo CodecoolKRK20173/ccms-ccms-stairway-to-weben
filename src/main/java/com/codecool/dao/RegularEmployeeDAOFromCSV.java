@@ -1,8 +1,6 @@
 package com.codecool.dao;
 
 import com.codecool.model.RegularEmployee;
-import com.codecool.util.LogIn;
-import com.codecool.view.RegularEmployeeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +11,6 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
     private String REGULAR_EMPLOYEE_GROUP = "2";
     private int REGULAR_EMPLOYEE_GROUP_NUMBER = 2;
     private FileParser fileParser;
-    private RegularEmployeeView regularEmployeeView = new RegularEmployeeView();
-    private LogIn logIn = new LogIn();
 
     public RegularEmployeeDAOFromCSV(){
         fileParser = new FileParser("src/main/java/com/codecool/dao/Workers");
@@ -61,45 +57,9 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
     }
 
     @Override
-    public void createEmployee() {
-        RegularEmployee regularEmployee = null;
-        String id;
-        String userName;
-        String password;
-        String name;
-        String surname;
-        int group;
-        regularEmployeeView.print("Enter id: ");
-        id = regularEmployeeView.input();
-        do {
-            regularEmployeeView.print("Enter user name: ");
-            userName = regularEmployeeView.input();
-        }while (logIn.doNotDuplicateNickNames(userName));
-        regularEmployeeView.print("Enter your password: ");
-        password = regularEmployeeView.input();
-        regularEmployeeView.print("Enter your name: ");
-        name = regularEmployeeView.input();
-        regularEmployeeView.print("Enter your surname: ");
-        surname = regularEmployeeView.input();
-        regularEmployee = new RegularEmployee(id,userName,password,name,surname,2);
-        String toStringRegularEmployee = toString(regularEmployee);
-        fileParser.addNewRecord(toStringRegularEmployee);
-    }
-    public String toString(RegularEmployee regularEmployee){
-        String newEmployee = "";
-        newEmployee += regularEmployee.getId();
-        newEmployee += "|";
-        newEmployee += regularEmployee.getUserName();
-        newEmployee += "|";
-        newEmployee += regularEmployee.getPassword();
-        newEmployee += "|";
-        newEmployee += regularEmployee.getName();
-        newEmployee += "|";
-        newEmployee += regularEmployee.getSurname();
-        newEmployee += "|";
-        newEmployee += "3";
-        newEmployee += "|";
-        return  newEmployee;
+    public void createEmployee(RegularEmployee employee) {
+        String[] newEmployee = createRecordFromEmployee(employee);
+        fileParser.addNewRecord(newEmployee);
     }
 
     private String[] createRecordFromEmployee(RegularEmployee employee) {
