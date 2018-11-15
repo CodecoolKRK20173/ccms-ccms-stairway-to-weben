@@ -22,19 +22,22 @@ public class MasterController {
         this.logIn = new LogIn();
         this.masterView = new MasterView();
     }
-    public String logIn(){
+
+    public String logIn() {
         String groupNumber = "0";
-        while(groupNumber.equals("0")) {
+        while (groupNumber.equals("0")) {
             masterView.print("Enter login: ");
             String login = masterView.input();
             masterView.print("Enter password: ");
             String password = masterView.input();
             groupNumber = logIn.findGroupByLogin(login, password);
-        }return  groupNumber;
+        }
+        return groupNumber;
     }
-    public void start(){
+
+    public void start() {
         boolean isWorking = true;
-        while(isWorking){
+        while (isWorking) {
             String groupNumber = logIn();
             switch (groupNumber) {
                 case "1":
@@ -52,7 +55,7 @@ public class MasterController {
                 case "0":
                     isWorking = false;
                     break;
-                }
+            }
         }
     }
 }

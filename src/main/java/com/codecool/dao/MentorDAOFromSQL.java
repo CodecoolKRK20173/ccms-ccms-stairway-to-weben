@@ -4,7 +4,7 @@ import com.codecool.model.Mentor;
 
 import java.util.List;
 
-public class MentorDAOFromSQL implements MentorDAO{
+public class MentorDAOFromSQL implements MentorDAO {
     @Override
     public Mentor getMentor(String id) {
         return null;

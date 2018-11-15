@@ -9,7 +9,7 @@ public class RegularEmployee implements User {
     private String surname;
     private int group;
 
-    public RegularEmployee(String id, String userName, String password, String name, String surname, int group){
+    public RegularEmployee(String id, String userName, String password, String name, String surname, int group) {
         this.id = id;
         this.userName = userName;
         this.password = password;

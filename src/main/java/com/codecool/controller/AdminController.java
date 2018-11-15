@@ -17,19 +17,21 @@ public class AdminController {
     private MentorView mentorView = new MentorView();
     private MentorController mentorController;
     private RegularEmployeeController regularEmployeeController = new RegularEmployeeController();
-    public AdminController(){
+
+    public AdminController() {
         this.mentorController = new MentorController(new StudentDAOFromCSV());
         this.mentorDAO = new MentorDAOFromCSV();
-//        this.regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
-        this.regularEmployeeDAO = new RegularEmployeeDAOFromSQL();
+        this.regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
+//        this.regularEmployeeDAO = new RegularEmployeeDAOFromSQL();
     }
 
-    public void start(){
+    public void start() {
         performAction();
     }
+
     private void performAction() {
         boolean imLogged = true;
-        while(imLogged){
+        while (imLogged) {
             adminView.showAdminMenu();
             String actionNumber = adminView.input();
             switch (actionNumber) {
@@ -66,11 +68,13 @@ public class AdminController {
             }
         }
     }
-    private void showRegularEmployeesTable(){
+
+    private void showRegularEmployeesTable() {
         List<RegularEmployee> regularEmployeesData = regularEmployeeDAO.getListOfEmployees();
         regularEmployeeView.printRegularEmployeeTable(regularEmployeesData);
     }
-    private void showMentorsTable(){
+
+    private void showMentorsTable() {
         List<Mentor> mentorData = mentorDAO.getListOfMentors();
         mentorView.printMentorTable(mentorData);
     }

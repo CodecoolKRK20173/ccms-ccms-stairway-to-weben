@@ -5,29 +5,30 @@ import com.codecool.model.Mentor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MentorDAOFromCSV implements MentorDAO{
+public class MentorDAOFromCSV implements MentorDAO {
     private FileParser fileParser;
-    private List<String []> listOfArrays;
+    private List<String[]> listOfArrays;
     private String MentorGroup = "3";
     private int MentorGroupNumber = 3;
     private Mentor mentor;
 
-    public MentorDAOFromCSV(){
+    public MentorDAOFromCSV() {
         this.fileParser = new FileParser("src/main/java/com/codecool/resources/Workers");
         this.listOfArrays = new ArrayList<>();
     }
+
     @Override
     public Mentor getMentor(String id) {
         this.listOfArrays = fileParser.listOfUsers();
         for (int i = 0; i < listOfArrays.size(); i++) {
-            if (listOfArrays.get(i)[0].equals(id) && listOfArrays.get(i)[5].equals(MentorGroup)){
-                this.mentor = new Mentor(listOfArrays.get(i)[0],listOfArrays.get(i)[1],listOfArrays.get(i)[2],listOfArrays.get(i)[3],listOfArrays.get(i)[4],MentorGroupNumber);
+            if (listOfArrays.get(i)[0].equals(id) && listOfArrays.get(i)[5].equals(MentorGroup)) {
+                this.mentor = new Mentor(listOfArrays.get(i)[0], listOfArrays.get(i)[1], listOfArrays.get(i)[2], listOfArrays.get(i)[3], listOfArrays.get(i)[4], MentorGroupNumber);
             }
         }
         return mentor;
     }
 
-    public String toString(Mentor mentor){
+    public String toString(Mentor mentor) {
         String newMentor = "";
         newMentor += mentor.getId();
         newMentor += "|";
@@ -41,7 +42,7 @@ public class MentorDAOFromCSV implements MentorDAO{
         newMentor += "|";
         newMentor += "3";
         newMentor += "|";
-        return  newMentor;
+        return newMentor;
     }
 
     @Override
@@ -49,8 +50,8 @@ public class MentorDAOFromCSV implements MentorDAO{
         this.listOfArrays = fileParser.listOfUsers();
         List<Mentor> mentors = new ArrayList<>();
         for (int i = 0; i < listOfArrays.size(); i++) {
-            if (listOfArrays.get(i)[5].equals(MentorGroup)){
-                mentors.add(new Mentor(listOfArrays.get(i)[0],listOfArrays.get(i)[1],listOfArrays.get(i)[2],listOfArrays.get(i)[3],listOfArrays.get(i)[4],MentorGroupNumber));
+            if (listOfArrays.get(i)[5].equals(MentorGroup)) {
+                mentors.add(new Mentor(listOfArrays.get(i)[0], listOfArrays.get(i)[1], listOfArrays.get(i)[2], listOfArrays.get(i)[3], listOfArrays.get(i)[4], MentorGroupNumber));
             }
         }
         return mentors;
@@ -66,8 +67,8 @@ public class MentorDAOFromCSV implements MentorDAO{
     public void deleteMentor(String nick) {
 
         this.listOfArrays = fileParser.listOfUsers();
-        for (int i = 0; i <listOfArrays.size() ; i++) {
-            if(listOfArrays.get(i)[1].equals(nick)){
+        for (int i = 0; i < listOfArrays.size(); i++) {
+            if (listOfArrays.get(i)[1].equals(nick)) {
                 listOfArrays.remove(i);
             }
         }

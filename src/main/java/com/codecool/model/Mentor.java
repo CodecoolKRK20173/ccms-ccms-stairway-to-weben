@@ -1,13 +1,14 @@
 package com.codecool.model;
 
-public class Mentor implements  User{
+public class Mentor implements User {
     private String userName;
     private String password;
     private String id;
     private int group;
     private String name;
     private String surname;
-    public Mentor(String id, String userName, String password, String name, String surname, int group){
+
+    public Mentor(String id, String userName, String password, String name, String surname, int group) {
         this.id = id;
         this.userName = userName;
         this.password = password;

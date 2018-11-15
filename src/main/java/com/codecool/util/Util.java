@@ -10,27 +10,30 @@ public class Util {
     private List<String[]> usersList;
     private FileParser fileParser;
 
-    private String createId(){ return UUID.randomUUID().toString(); }
+    private String createId() {
+        return UUID.randomUUID().toString();
+    }
 
-    private boolean checkIfIdIsUnique(String id){
+    private boolean checkIfIdIsUnique(String id) {
         fileParser = new FileParser("src/main/java/com/codecool/resources/Workers");
         usersList = fileParser.listOfUsers();
 
         for (String[] user : usersList) {
-            if(user[0].equals(id)) {
+            if (user[0].equals(id)) {
                 return false;
             }
         }
         return true;
     }
 
-    public String getNewId(){
+    public String getNewId() {
         String idToCheck = createId();
-        if(checkIfIdIsUnique(idToCheck)){
+        if (checkIfIdIsUnique(idToCheck)) {
             return idToCheck;
-            } else {
+        } else {
             getNewId();
-            }return null;
+        }
+        return null;
     }
 
 

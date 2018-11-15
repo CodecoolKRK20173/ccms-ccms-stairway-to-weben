@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MentorView {
-    public void showMentorMenu(){
+    public void showMentorMenu() {
         System.out.println("1. Show list of students");
         System.out.println("2. Show grades of one student");
         System.out.println("3. Show addresses of students");
@@ -20,16 +20,18 @@ public class MentorView {
         System.out.println("0. Log out");
     }
 
-    public void print(String text){
+    public void print(String text) {
         System.out.println(text);
     }
-    public String input(){
+
+    public String input() {
         String input = "";
         Scanner sc = new Scanner(System.in);
         input = sc.nextLine();
-        return  input;
+        return input;
     }
-    public void printUnderConstruction(){
+
+    public void printUnderConstruction() {
         System.out.println("Under Construction.");
     }
 
@@ -38,19 +40,20 @@ public class MentorView {
         System.out.printf("%10s %15s %20s %20s %10s", "ID", "NAME", "SURNAME", "CONTACT", "GROUP");
         System.out.println();
         System.out.println("-------------------------------------------------------------------------------");
-        for(Student student: studentsData){
+        for (Student student : studentsData) {
             System.out.format("%10s %15s %20s %20s %10s",
                 student.getId(), student.getName(), student.getSurname(), student.getEmail(), student.getGroup());
             System.out.println();
         }
         System.out.println("-------------------------------------------------------------------------------");
     }
+
     public void printMentorTable(List<Mentor> mentorsList) {
         System.out.println("-------------------------------------------------------------------------------");
         System.out.printf("%10s %15s %20s", "ID", "NAME", "SURNAME");
         System.out.println();
         System.out.println("-------------------------------------------------------------------------------");
-        for(Mentor mentor: mentorsList){
+        for (Mentor mentor : mentorsList) {
             System.out.format("%10s %15s %20s",
                 mentor.getId(), mentor.getName(), mentor.getSurname());
             System.out.println();

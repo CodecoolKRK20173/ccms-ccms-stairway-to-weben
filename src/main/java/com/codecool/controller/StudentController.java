@@ -13,8 +13,8 @@ public class StudentController {
     private StudentDAO studentDAO;
     private StudentView studentView = new StudentView();
     private LogIn logIn = new LogIn();
-    
-    public StudentController(){
+
+    public StudentController() {
         this.studentDAO = new StudentDAOFromCSV();
     }
 
@@ -22,10 +22,10 @@ public class StudentController {
     public void switchStudentMenu() {
         String choice;
         boolean imLogged = true;
-        while(imLogged){
+        while (imLogged) {
             studentView.showStudentMenu();
-            choice=studentView.input();
-            switch(choice){
+            choice = studentView.input();
+            switch (choice) {
                 case "1":
                     showMyGradesView();
                     studentView.input();
@@ -34,9 +34,9 @@ public class StudentController {
                     studentView.print("Enter assignment to evaluation: ");
                     String name = studentView.input();
                     String answer = "";
-                    try{
-                        answer = chooseAssignments(name);}
-                    catch (Exception e){
+                    try {
+                        answer = chooseAssignments(name);
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     studentView.print("Your assignment to evaluation: " + answer);
@@ -56,7 +56,8 @@ public class StudentController {
             }
         }
     }
-    public Student createNewStudent(){
+
+    public Student createNewStudent() {
         Student student = null;
         String id;
         String login;
@@ -71,7 +72,7 @@ public class StudentController {
         do {
             studentView.print("Enter user name: ");
             login = studentView.input();
-        }while (logIn.doNotDuplicateNickNames(login));
+        } while (logIn.doNotDuplicateNickNames(login));
         studentView.print("Enter your password: ");
         password = studentView.input();
         studentView.print("Enter your name: ");
@@ -82,24 +83,24 @@ public class StudentController {
         address = studentView.input();
         studentView.print("Enter your email: ");
         email = studentView.input();
-        student = new Student(id,login,password,name,surname,"4",address,email);
+        student = new Student(id, login, password, name, surname, "4", address, email);
         return student;
     }
 
-    public Map<String, Integer> showMyGrades(){
+    public Map<String, Integer> showMyGrades() {
         Map<String, Integer> myGrades = this.studentDAO.getGradesForYourAssignments();
 
         return myGrades;
     }
 
-    public String nickToRemove(){
+    public String nickToRemove() {
         String nick = "";
         studentView.print("Enter student's nick to delete it");
         nick = studentView.input();
         return nick;
     }
 
-    public List<String> showAvailableAssignments(){
+    public List<String> showAvailableAssignments() {
         List<String> listOfAvailableAssignments = this.studentDAO.getNotEvaluatedAssignments();
 
         return listOfAvailableAssignments;
@@ -108,15 +109,15 @@ public class StudentController {
     public String chooseAssignments(String name) throws Exception {
         List<String> listOfAvailableAssignments = this.studentDAO.getNotEvaluatedAssignments();
 
-        for(String element: listOfAvailableAssignments){
-            if(element.toLowerCase().contains(name.toLowerCase())){
+        for (String element : listOfAvailableAssignments) {
+            if (element.toLowerCase().contains(name.toLowerCase())) {
                 return element;
             }
         }
         throw new Exception("Assignment is not available or doesn't exist");
     }
 
-    public double getAverageFromGrades(){
+    public double getAverageFromGrades() {
         Map<String, Integer> myGrades = this.studentDAO.getGradesForYourAssignments();
 
         int sum = 0;
@@ -128,7 +129,8 @@ public class StudentController {
         }
         return sum / myGrades.size();
     }
-    public void showMyGradesView(){
+
+    public void showMyGradesView() {
         Map<String, Integer> mapGrades = showMyGrades();
 
         for (Map.Entry<String, Integer> entry : mapGrades.entrySet()) {
@@ -136,16 +138,16 @@ public class StudentController {
         }
     }
 
-    public void showAvailableAssaignmentsView(){
+    public void showAvailableAssaignmentsView() {
         List<String> list = showAvailableAssignments();
 
-        for(String element: list){
+        for (String element : list) {
             studentView.print(element);
 
         }
     }
 
-    public void getAverageFromMyGradesView(){
+    public void getAverageFromMyGradesView() {
         double average = getAverageFromGrades();
         studentView.print("Average of your grades: " + average);
     }
