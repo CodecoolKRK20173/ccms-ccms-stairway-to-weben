@@ -21,8 +21,8 @@ public class AdminController {
     public AdminController() {
         this.mentorController = new MentorController(new StudentDAOFromCSV());
         this.mentorDAO = new MentorDAOFromCSV();
-        this.regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
-//        this.regularEmployeeDAO = new RegularEmployeeDAOFromSQL();
+//        this.regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
+        this.regularEmployeeDAO = new RegularEmployeeDAOFromSQL();
     }
 
     public void start() {

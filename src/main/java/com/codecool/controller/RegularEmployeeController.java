@@ -7,7 +7,9 @@ import com.codecool.dao.StudentDAOFromCSV;
 import com.codecool.model.RegularEmployee;
 import com.codecool.model.Student;
 import com.codecool.util.LogIn;
+import com.codecool.util.Util;
 import com.codecool.util.UtilFromCSV;
+import com.codecool.util.UtilFromSQL;
 import com.codecool.view.RegularEmployeeView;
 
 import java.util.List;
@@ -18,7 +20,8 @@ public class RegularEmployeeController {
     private RegularEmployeeView regularEmployeeView = new RegularEmployeeView();
     private StudentDAO studentDAO = new StudentDAOFromCSV();
     private LogIn logIn = new LogIn();
-    private UtilFromCSV utilFromCSV = new UtilFromCSV();
+    private Util utilFromCSV = new UtilFromCSV();
+    private Util utilFromSQL = new UtilFromSQL();
 
     public void start() {
         performAction();
@@ -74,16 +77,17 @@ public class RegularEmployeeController {
         String name;
         String surname;
         int group;
-        id = utilFromCSV.getNewId();
+//        id = utilFromCSV.getNewId();
+        id = utilFromSQL.getNewId();
         do {
             regularEmployeeView.print("Enter user name: ");
             userName = regularEmployeeView.input();
         } while (logIn.doNotDuplicateNickNames(userName));
-        regularEmployeeView.print("Enter your password: ");
+        regularEmployeeView.print("Enter password: ");
         password = regularEmployeeView.input();
-        regularEmployeeView.print("Enter your name: ");
+        regularEmployeeView.print("Enter name: ");
         name = regularEmployeeView.input();
-        regularEmployeeView.print("Enter your surname: ");
+        regularEmployeeView.print("Enter surname: ");
         surname = regularEmployeeView.input();
         regularEmployee = new RegularEmployee(id, userName, password, name, surname, 2);
         return regularEmployee;

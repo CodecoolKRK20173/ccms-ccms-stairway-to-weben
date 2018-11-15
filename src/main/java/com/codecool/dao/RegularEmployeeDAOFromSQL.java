@@ -44,9 +44,11 @@ public class RegularEmployeeDAOFromSQL implements RegularEmployeeDAO {
 
     @Override
     public void createEmployee(RegularEmployee employee) {
-//        String sql = "INSERT INTO Users (ID, UserName, Password, Name, Surname, [Group]) " +
-//            "VALUES (1, 'Paul', 32, 'California', 20000.00 );";
-//        dataBaseConnector.update();
+        String sql = "INSERT INTO Users (ID, UserName, Password, Name, Surname, [Group]) " +
+            "VALUES (\"" + employee.getId() + "\", \"" + employee.getUserName() + "\", \"" + employee.getPassword() +
+            "\", \"" + employee.getName() + "\", \"" + employee.getSurname() + "\", " + employee.getGroup() + ");";
+
+        dataBaseConnector.update(sql);
     }
 
     @Override
