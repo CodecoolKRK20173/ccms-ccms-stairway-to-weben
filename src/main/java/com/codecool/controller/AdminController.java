@@ -1,9 +1,6 @@
 package com.codecool.controller;
 
-import com.codecool.dao.MentorDAO;
-import com.codecool.dao.MentorDAOFromCSV;
-import com.codecool.dao.RegularEmployeeDAO;
-import com.codecool.dao.RegularEmployeeDAOFromCSV;
+import com.codecool.dao.*;
 import com.codecool.model.Mentor;
 import com.codecool.model.RegularEmployee;
 import com.codecool.view.AdminView;
@@ -18,17 +15,23 @@ public class AdminController {
     private AdminView adminView = new AdminView();
     private RegularEmployeeView regularEmployeeView = new RegularEmployeeView();
     private MentorView mentorView = new MentorView();
-    public AdminController(){
-    this.mentorDAO = new MentorDAOFromCSV();
-    this.regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
+    private MentorController mentorController;
+    private RegularEmployeeController regularEmployeeController = new RegularEmployeeController();
+
+    public AdminController() {
+        this.mentorController = new MentorController(new StudentDAOFromCSV());
+        this.mentorDAO = new MentorDAOFromCSV();
+//        this.regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
+        this.regularEmployeeDAO = new RegularEmployeeDAOFromSQL();
     }
 
-    public void start(){
+    public void start() {
         performAction();
     }
+
     private void performAction() {
         boolean imLogged = true;
-        while(imLogged){
+        while (imLogged) {
             adminView.showAdminMenu();
             String actionNumber = adminView.input();
             switch (actionNumber) {
@@ -41,11 +44,11 @@ public class AdminController {
                     adminView.input();
                     break;
                 case "3":
-                    regularEmployeeDAO.createEmployee();
+                    regularEmployeeDAO.createEmployee(regularEmployeeController.createNewEmployee());
                     adminView.input();
                     break;
                 case "4":
-                    mentorDAO.createMentor();
+                    mentorDAO.createMentor(mentorController.createNewMentor());
                     adminView.input();
                     break;
                 case "5":
@@ -56,7 +59,7 @@ public class AdminController {
                     adminView.input();
                     break;
                 case "6":
-                    mentorDAO.deleteMentor();
+                    mentorDAO.deleteMentor(mentorController.nickToRemove());
                     adminView.input();
                     break;
                 case "0":
@@ -65,11 +68,13 @@ public class AdminController {
             }
         }
     }
-    private void showRegularEmployeesTable(){
+
+    private void showRegularEmployeesTable() {
         List<RegularEmployee> regularEmployeesData = regularEmployeeDAO.getListOfEmployees();
         regularEmployeeView.printRegularEmployeeTable(regularEmployeesData);
     }
-    private void showMentorsTable(){
+
+    private void showMentorsTable() {
         List<Mentor> mentorData = mentorDAO.getListOfMentors();
         mentorView.printMentorTable(mentorData);
     }
