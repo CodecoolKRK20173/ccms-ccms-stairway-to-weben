@@ -1,15 +1,14 @@
 package com.codecool.model;
 
-import com.codecool.dao.RegularEmployeeDAO;
-
-public class Admin implements User{
+public class Admin implements User {
     private String userName;
     private String password;
     private String id;
     private int group;
     private String name;
     private String surname;
-    public Admin(String id, String userName, String password, String name, String surname, int group){
+
+    public Admin(String id, String userName, String password, String name, String surname, int group) {
         this.id = id;
         this.userName = userName;
         this.password = password;

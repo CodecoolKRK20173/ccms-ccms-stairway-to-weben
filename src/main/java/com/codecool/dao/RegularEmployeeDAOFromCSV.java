@@ -12,8 +12,8 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
     private int REGULAR_EMPLOYEE_GROUP_NUMBER = 2;
     private FileParser fileParser;
 
-    public RegularEmployeeDAOFromCSV(){
-        fileParser = new FileParser("src/main/java/com/codecool/dao/Workers");
+    public RegularEmployeeDAOFromCSV() {
+        fileParser = new FileParser("src/main/java/com/codecool/resources/Workers");
         usersList = fileParser.listOfUsers();
     }
 
@@ -26,7 +26,7 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
         int group = REGULAR_EMPLOYEE_GROUP_NUMBER;
 
         for (String[] user : usersList) {
-            if(user[0].equals(id) && user[5].equals(REGULAR_EMPLOYEE_GROUP)){
+            if (user[0].equals(id) && user[5].equals(REGULAR_EMPLOYEE_GROUP)) {
                 userName = user[1];
                 password = user[2];
                 name = user[3];
@@ -43,7 +43,7 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
         List<RegularEmployee> regularEmployees = new ArrayList<>();
 
         for (String[] user : usersList) {
-            if(user[5].equals(REGULAR_EMPLOYEE_GROUP)){
+            if (user[5].equals(REGULAR_EMPLOYEE_GROUP)) {
                 String id = user[0];
                 String userName = user[1];
                 String password = user[2];
@@ -76,7 +76,7 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
     @Override
     public void deleteEmployee(String userName) {
         for (int i = 0; i < usersList.size(); i++) {
-            if(usersList.get(i)[1].equals(userName)){
+            if (usersList.get(i)[1].equals(userName)) {
                 usersList.remove(i);
                 break;
             }
@@ -88,7 +88,7 @@ public class RegularEmployeeDAOFromCSV implements RegularEmployeeDAO {
     public void updateEmployee(RegularEmployee employee) {
 
         for (int i = 0; i < usersList.size(); i++) {
-            if(usersList.get(i)[1].equals(employee.getUserName())){
+            if (usersList.get(i)[1].equals(employee.getUserName())) {
                 usersList.set(i, createRecordFromEmployee(employee));
                 break;
             }

@@ -2,6 +2,8 @@ package com.codecool.controller;
 
 import com.codecool.dao.StudentDAO;
 import com.codecool.dao.StudentDAOFromCSV;
+import com.codecool.model.Student;
+import com.codecool.util.LogIn;
 import com.codecool.view.StudentView;
 
 import java.util.List;
@@ -10,8 +12,9 @@ import java.util.Map;
 public class StudentController {
     private StudentDAO studentDAO;
     private StudentView studentView = new StudentView();
-    
-    public StudentController(){
+    private LogIn logIn = new LogIn();
+
+    public StudentController() {
         this.studentDAO = new StudentDAOFromCSV();
     }
 
@@ -19,24 +22,24 @@ public class StudentController {
     public void switchStudentMenu() {
         String choice;
         boolean imLogged = true;
-        while(imLogged){
+        while (imLogged) {
             studentView.showStudentMenu();
-            choice=studentView.input();
-            switch(choice){
+            choice = studentView.input();
+            switch (choice) {
                 case "1":
                     showMyGradesView();
                     studentView.input();
                     break;
                 case "2":
-                    System.out.print("Enter assignment to evaluation: ");
+                    studentView.print("Enter assignment to evaluation: ");
                     String name = studentView.input();
                     String answer = "";
-                    try{
-                        answer = chooseAssignments(name);}
-                    catch (Exception e){
+                    try {
+                        answer = chooseAssignments(name);
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    System.out.println("Your assignment to evaluation: " + answer);
+                    studentView.print("Your assignment to evaluation: " + answer);
                     studentView.input();
                     break;
                 case "3":
@@ -54,13 +57,50 @@ public class StudentController {
         }
     }
 
-    public Map<String, Integer> showMyGrades(){
+    public Student createNewStudent() {
+        Student student = null;
+        String id;
+        String login;
+        String password;
+        String name;
+        String surname;
+        String group;
+        String address;
+        String email;
+        studentView.print("Enter id: ");
+        id = studentView.input();
+        do {
+            studentView.print("Enter user name: ");
+            login = studentView.input();
+        } while (logIn.doNotDuplicateNickNames(login));
+        studentView.print("Enter your password: ");
+        password = studentView.input();
+        studentView.print("Enter your name: ");
+        name = studentView.input();
+        studentView.print("Enter your surname: ");
+        surname = studentView.input();
+        studentView.print("Enter your address: ");
+        address = studentView.input();
+        studentView.print("Enter your email: ");
+        email = studentView.input();
+        student = new Student(id, login, password, name, surname, "4", address, email);
+        return student;
+    }
+
+    public Map<String, Integer> showMyGrades() {
         Map<String, Integer> myGrades = this.studentDAO.getGradesForYourAssignments();
 
         return myGrades;
     }
 
-    public List<String> showAvailableAssignments(){
+    public String nickToRemove() {
+        String nick = "";
+        studentView.print("Enter student's nick to delete it");
+        nick = studentView.input();
+        return nick;
+    }
+
+    public List<String> showAvailableAssignments() {
         List<String> listOfAvailableAssignments = this.studentDAO.getNotEvaluatedAssignments();
 
         return listOfAvailableAssignments;
@@ -69,15 +109,15 @@ public class StudentController {
     public String chooseAssignments(String name) throws Exception {
         List<String> listOfAvailableAssignments = this.studentDAO.getNotEvaluatedAssignments();
 
-        for(String element: listOfAvailableAssignments){
-            if(element.toLowerCase().contains(name.toLowerCase())){
+        for (String element : listOfAvailableAssignments) {
+            if (element.toLowerCase().contains(name.toLowerCase())) {
                 return element;
             }
         }
         throw new Exception("Assignment is not available or doesn't exist");
     }
 
-    public double getAverageFromGrades(){
+    public double getAverageFromGrades() {
         Map<String, Integer> myGrades = this.studentDAO.getGradesForYourAssignments();
 
         int sum = 0;
@@ -89,25 +129,26 @@ public class StudentController {
         }
         return sum / myGrades.size();
     }
-    public void showMyGradesView(){
+
+    public void showMyGradesView() {
         Map<String, Integer> mapGrades = showMyGrades();
 
         for (Map.Entry<String, Integer> entry : mapGrades.entrySet()) {
-            System.out.println(entry.getKey() + " - " + entry.getValue() + " grade");
+            studentView.print(entry.getKey() + " - " + entry.getValue() + " grade");
         }
     }
 
-    public void showAvailableAssaignmentsView(){
+    public void showAvailableAssaignmentsView() {
         List<String> list = showAvailableAssignments();
 
-        for(String element: list){
-            System.out.println(element);
+        for (String element : list) {
+            studentView.print(element);
 
         }
     }
 
-    public void getAverageFromMyGradesView(){
+    public void getAverageFromMyGradesView() {
         double average = getAverageFromGrades();
-        System.out.println("Average of your grades: " + average);
+        studentView.print("Average of your grades: " + average);
     }
 }

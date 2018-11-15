@@ -18,7 +18,7 @@ public class RegularEmployeeDAOFromSQL implements RegularEmployeeDAO {
 
     @Override
     public List<RegularEmployee> getListOfEmployees() {
-        ResultSet rs = dataBaseConnector.query("SELECT ID, UserName, Password, Surname, Group FROM Users GROUP BY Group WHERE Group = 2");
+        ResultSet rs = dataBaseConnector.query("SELECT ID, UserName, Password, Name, Surname, [Group] FROM Users WHERE [Group] = 2;");
         List<RegularEmployee> listOfEmployees = new ArrayList<>();
         try {
             while (rs.next()) {

@@ -6,9 +6,13 @@ import java.util.List;
 
 public interface MentorDAO {
     Mentor getMentor(String id);
+
     List<Mentor> getListOfMentors();
-    void createMentor();
-    void deleteMentor();
+
+    void createMentor(Mentor mentor);
+
+    void deleteMentor(String nick);
+
     void updateMentor(Mentor mentor);
 
 }

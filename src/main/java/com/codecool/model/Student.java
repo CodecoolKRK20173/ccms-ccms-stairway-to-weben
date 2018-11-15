@@ -3,7 +3,7 @@ package com.codecool.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student implements User{
+public class Student implements User {
 
     private String id;
     private String login;
@@ -17,11 +17,11 @@ public class Student implements User{
     private String groupClass;
     private Map<String, Integer> grades = new HashMap<>();
 
-    public Student(){
+    public Student() {
 
     }
 
-    public Student(String id, String login, String password, String name, String surname, String groupClass, String address, String email){
+    public Student(String id, String login, String password, String name, String surname, String groupClass, String address, String email) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -61,11 +61,11 @@ public class Student implements User{
         return group;
     }
 
-    public String getAttendance(){
+    public String getAttendance() {
         return attendance;
     }
 
-    public void setAttendance(String attendance){
+    public void setAttendance(String attendance) {
         this.attendance = attendance;
     }
 
@@ -109,11 +109,11 @@ public class Student implements User{
         this.grades = grades;
     }
 
-    public String getGroupClass(){
+    public String getGroupClass() {
         return groupClass;
     }
 
-    public String toString(){
+    public String toString() {
         return id + " " + name + " " + surname + " " + email + " " + address + " " + groupClass;
     }
 }
