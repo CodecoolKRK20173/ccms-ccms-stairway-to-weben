@@ -17,7 +17,7 @@ public class DataBaseConnector {
         try {
             this.conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -31,7 +31,7 @@ public class DataBaseConnector {
 
             return rs;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }

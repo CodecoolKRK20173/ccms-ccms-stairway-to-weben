@@ -13,7 +13,6 @@ import java.util.List;
 
 public class RegularEmployeeController {
 
-    private RegularEmployeeDAO regularEmployeeDAO = new RegularEmployeeDAOFromCSV();
     private RegularEmployeeView regularEmployeeView = new RegularEmployeeView();
     private StudentDAO studentDAO= new StudentDAOFromCSV();
     private LogIn logIn = new LogIn();
