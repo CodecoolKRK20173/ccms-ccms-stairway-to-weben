@@ -21,30 +21,23 @@ public class FileParser {
 	
 	
 	public void loadFile(){
-	
 		this.fileContent="";
 		try{
 			File file = new File(this.fileName);
 			Scanner sc = new Scanner(file);
 			while(sc.hasNext()){
-			
 				fileContent += sc.nextLine();
 				fileContent += "\n";
-			
 			}
 		sc.close();
 		}
 		catch(FileNotFoundException e){
-			
-			System.out.println("There is no file like "+this.fileName);
-		
+			e.printStackTrace();
 		}
-	
-		
 	}
 
 	public void splitFileContent(){
-		listOfUsers=new ArrayList<>();
+		this.listOfUsers=new ArrayList<>();
 		this.splitedFileContent=this.fileContent.split("\\r?\\n");
 		for(String line : splitedFileContent){
 			this.listOfUsers.add(line.split("\\|"));
@@ -52,65 +45,47 @@ public class FileParser {
 	}	
 	
 	public List<String[]> listOfUsers(){
-	
-	
 		loadFile();
 		splitFileContent();
-	
 		return this.listOfUsers;
 	}
 
 	
 	public void addNewRecord(String newRecordToFile){
-
 		try{
-		
 			FileWriter fw = new FileWriter(this.fileName,true);
 			fw.write(newRecordToFile+"\n");
 			fw.close();
 		}
 		
 		catch(Exception e){
-		
-			System.out.println("there is a problem...");
-		
+			e.printStackTrace();
 		}
 	}
 
 	public void addNewRecord(String[] newRecord){
-        String newRecordToFile = String.join("|", newRecord);
+        String newRecordToFile = String.join("|", newRecord) + "|";
         addNewRecord(newRecordToFile);
     }
 	
 	public void saveUploadedListInFile(List<String[]> list){
-	
 		String newContent="";
-		
 		for(String[] array : list){
-		
 			for(int i=0; i<array.length; i++){
 				newContent+=array[i];
 				newContent+="|";
-
-			
 			}
 			newContent+="\n";
 		
 		}
 		
 		try{
-            System.out.println(newContent+"a");
 			FileWriter fw = new FileWriter(this.fileName,false);
 			fw.write(newContent);
-			System.out.println("sad");
 			fw.close();
-			
-		
 		}
 		catch(IOException e){
-		
-			System.out.println("fd");
-			
+            e.printStackTrace();
 		}
 	
 	}

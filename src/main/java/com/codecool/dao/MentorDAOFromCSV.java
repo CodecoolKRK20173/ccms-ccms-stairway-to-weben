@@ -17,7 +17,7 @@ public class MentorDAOFromCSV implements MentorDAO{
     private LogIn logIn = new LogIn();
 
     public MentorDAOFromCSV(){
-        this.fileParser = new FileParser("/home/trauke/codecool/javaa/6tw/ccms-ccms-stairway-to-weben/src/main/java/com/codecool/dao/Workers");
+        this.fileParser = new FileParser("src/main/java/com/codecool/dao/Workers");
         this.listOfArrays = new ArrayList<>();
     }
     @Override
@@ -83,7 +83,6 @@ public class MentorDAOFromCSV implements MentorDAO{
         surname = mentorView.input();
         mentor = new Mentor(id,userName,password,name,surname,3);
         String toStringMentor = toString(mentor);
-        System.out.println(toStringMentor);
         fileParser.addNewRecord(toStringMentor);
     }
 

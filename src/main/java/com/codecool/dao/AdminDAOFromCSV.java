@@ -13,27 +13,10 @@ public class AdminDAOFromCSV implements AdminDAO{
     private int AdminGroupNumber = 1;
 
     public AdminDAOFromCSV(FileParser fileParser) {
-        this.fileParser = new FileParser("ccms-ccms-stairway-to-weben/src/main/java/com/codecool/dao/Workers");
+        this.fileParser = new FileParser("src/main/java/com/codecool/dao/Workers");
         listOfArrays = new ArrayList<>();
     }
 
-    public String toString(Admin admin){
-        String newAdmin = "";
-        newAdmin += admin.getId();
-        newAdmin += "|";
-        newAdmin += admin.getUserName();
-        newAdmin += "|";
-        newAdmin += admin.getPassword();
-        newAdmin += "|";
-        newAdmin += admin.getName();
-        newAdmin += "|";
-        newAdmin += admin.getSurname();
-        newAdmin += "|";
-        newAdmin += "3";
-        newAdmin += "|";
-        return  newAdmin;
-
-    }
 
     public FileParser getFileParser() {
         return fileParser;
@@ -49,5 +32,4 @@ public class AdminDAOFromCSV implements AdminDAO{
         }
         return admin;
     }
-
 }
