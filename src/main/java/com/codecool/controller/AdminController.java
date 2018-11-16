@@ -55,6 +55,7 @@ public class AdminController {
                     String userName;
                     adminView.print("Enter employee's nick to delete it");
                     userName = adminView.input();
+
                     regularEmployeeDAO.deleteEmployee(userName);
                     adminView.input();
                     break;

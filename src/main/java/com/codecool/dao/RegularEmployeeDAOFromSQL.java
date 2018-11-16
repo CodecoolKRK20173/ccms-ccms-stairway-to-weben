@@ -53,7 +53,9 @@ public class RegularEmployeeDAOFromSQL implements RegularEmployeeDAO {
 
     @Override
     public void deleteEmployee(String userName) {
+        String sql = "DELETE FROM Users WHERE UserName = \"" + userName + "\";";
 
+        dataBaseConnector.update(sql);
     }
 
     @Override

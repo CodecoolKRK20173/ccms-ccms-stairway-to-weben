@@ -29,9 +29,9 @@ public class RegularEmployeeController {
 
     private void performAction() {
         boolean imLogged = true;
-        while(imLogged){
-                regularEmployeeView.printMenu();
-                String actionNumber = regularEmployeeView.input();
+        while (imLogged) {
+            regularEmployeeView.printMenu();
+            String actionNumber = regularEmployeeView.input();
             switch (actionNumber) {
                 case "1":
                     showStudentsTable();
@@ -93,6 +93,11 @@ public class RegularEmployeeController {
         return regularEmployee;
     }
 
+//    public boolean verifyUsersInput(String input) {
+//        String validatorRegex = "[A-Za-z0-9]+";
+//
+//        return input.matches(validatorRegex);
+//    }
 
 }
 

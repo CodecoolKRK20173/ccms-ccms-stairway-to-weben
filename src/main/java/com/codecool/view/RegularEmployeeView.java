@@ -56,12 +56,12 @@ public class RegularEmployeeView {
 
     public void printRegularEmployeeTable(List<RegularEmployee> regularEmployeesList) {
         System.out.println("-------------------------------------------------------------------------------");
-        System.out.printf("%10s %15s %20s", "ID", "NAME", "SURNAME");
+        System.out.printf("%15s %15s %15s %20s", "ID", "LOGIN", "NAME", "SURNAME");
         System.out.println();
         System.out.println("-------------------------------------------------------------------------------");
         for (RegularEmployee regularEmployee : regularEmployeesList) {
-            System.out.format("%10s %15s %20s",
-                regularEmployee.getId(), regularEmployee.getName(), regularEmployee.getSurname());
+            System.out.format("%15s %15s %15s %20s",
+                regularEmployee.getId(), regularEmployee.getUserName(), regularEmployee.getName(), regularEmployee.getSurname());
             System.out.println();
         }
         System.out.println("-------------------------------------------------------------------------------");
